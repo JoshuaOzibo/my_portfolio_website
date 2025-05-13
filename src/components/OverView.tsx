@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import MagicCard from "@/components/Magic_card";
 import { HeroCardData } from '@/lib/db'
 
