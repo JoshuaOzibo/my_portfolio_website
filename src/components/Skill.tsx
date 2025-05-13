@@ -52,7 +52,7 @@ const TechIconCardExperience = () => {
               <Model tech={tech} />
               <OrbitControls enableZoom={false} />
             </Canvas>
-            <h3 className="text-center text-[#86cad9] text-white font-bold text-2xl mt-4">{tech.name}</h3>
+            <h3 className="text-center text-[#86cad9] font-bold text-2xl mt-4">{tech.name}</h3>
           </div>
         ))}
       </div>
