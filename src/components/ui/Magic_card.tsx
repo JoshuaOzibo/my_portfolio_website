@@ -7,11 +7,15 @@ const Magic_Card = ({
   index,
   children,
   className,
+  onHover,
+  onLeave,
 }: {
   card: any;
   index: number;
   children: React.ReactNode;
   className: string;
+  onHover?: () => void;
+  onLeave?: () => void;
 }) => {
   // Properly type the refs array
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -45,7 +49,9 @@ const Magic_Card = ({
         cardRefs.current[index] = el;
       }}
       onMouseMove={handleMouseMove(index)}
-      className={`card card-border timeline-card rounded-xl p-5 mb-5 z-[5] ${className}`}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      className={`card card-border timeline-card rounded-xl p-5 mb-5 z-[5] relative overflow-hidden ${className}`}
     >
       <div className="glow"></div>
       {children}

@@ -5,27 +5,74 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagicCard from "@/components/ui/Magic_card";
 import { experienceCards } from "@/lib/db";
+import { useRef } from "react";
+import Image from 'next/image';
+import SwiftcareerPreview from "@/assets/swiftcareerPreviewImage.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleMouseEnter = (index: number) => {
+    const imageRef = imageRefs.current[index];
+    if (imageRef) {
+      gsap.to(imageRef, {
+        y: '0%',
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const imageRef = imageRefs.current[index];
+    if (imageRef) {
+      gsap.to(imageRef, {
+        y: '200%',
+        duration: 0.5,
+        ease: "power2.in",
+      });
+    }
+  };
+
   return (
-    <section className="px-10 py-20 border">
-      <h1 className="text-4xl font-bold text-center py-2">Experience</h1>
-      <div className="flex mx-20 flex-col gap-4">
+    <section className="px-10 py-20">
+      <h1 className="text-4xl font-bold text-center py-5">Experience</h1>
+      <div className="flex mx-20 flex-col lg:space-y-0 space-y-16 gap-4">
         {experienceCards.map((card, index) => (
           <main
-            className="w-full md:flex justify-center gap-20 items-center"
+            className="w-full lg:flex justify-center gap-20 items-center"
             key={index}
           >
-            <MagicCard card={card} index={index} className="w-1/2">
-              <div className="flex flex-col py-28 gap-4">
-                <h1>{card.title}</h1>
-                <p>{card.date}</p>
-              </div>
-            </MagicCard>
+            <div className="lg:w-1/2 w-full">
+              <MagicCard 
+                card={card} 
+                index={index} 
+                className="w-full"
+                onHover={() => handleMouseEnter(index)}
+                onLeave={() => handleMouseLeave(index)}
+              >
+                <div className="relative flex flex-col py-28 gap-4">
+                  <div className="relative z-5">
+                    <h1 className="transition-colors duration-300 text-white">{card.title}</h1>
+                    <p className="transition-colors duration-300 text-white">{card.date}</p>
+                  </div>
 
-            <div className="w-1/2">
+                  <Image 
+                    className="absolute rounded-md inset-0 z-10 w-full h-full object-cover object-center translate-y-[200%]"
+                    ref={(el) => {
+                      if (el) imageRefs.current[index] = el;
+                    }}
+                    src={SwiftcareerPreview.src}
+                    alt="Swiftcareer Preview"
+                    fill
+                  />
+                </div>
+              </MagicCard>
+            </div>
+
+            <div className="lg:w-1/2 w-full">
               <div className="">
                 <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                   <div>
