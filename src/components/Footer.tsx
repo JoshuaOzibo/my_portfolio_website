@@ -9,10 +9,10 @@ import { Socials } from "@/lib/db";
 
 const Footer = () => {
   return (
-    <div className="border-t border-black-50 py-5 flex items-center justify-between px-10 text-[#86cad9] w-full">
-      <h1>Terms & Conditions</h1>
+    <div className="border-t border-black-50 py-5 space-y-3 md:space-y-0 md:flex items-center justify-center md:justify-between px-10 text-[#86cad9] w-full">
+      <h1 className="text-center md:text-left">Terms & Conditions</h1>
       <div className="flex items-center">
-        <div className="flex space-x-5">
+        <div className="flex space-x-5 md:m-0 m-auto">
           <a
             href={Socials.Github}
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
@@ -45,7 +45,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <p>
+      <p className="text-center md:text-right">
         &copy; {new Date().getFullYear()} Ozibo Joshua. All rights reserved.
       </p>
     </div>
