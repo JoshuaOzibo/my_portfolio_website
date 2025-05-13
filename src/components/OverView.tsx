@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import MagicCard from "@/components/Magic_card";
+import MagicCard from "@/components/ui/Magic_card";
 import { HeroCardData } from '@/lib/db'
 
 const OverView = () => {
