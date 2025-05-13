@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="w-full z-[50] fixed flex h-16 justify-center items-center backdrop-blur-lg">
       <div className="w-[85%] h-full items-center flex md:justify-between">
         {/* Header */}
-        <h1 className="md:text-xl text-white font-[SatoshiFont] md:block hidden sm:text-sm  font-black text-xs uppercase">
+        <h1 className="md:text-xl text-[#86cad9] font-[SatoshiFont] md:block hidden sm:text-sm  font-black text-xs uppercase">
           Portfolio
         </h1>
 

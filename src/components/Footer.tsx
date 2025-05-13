@@ -9,7 +9,7 @@ import { Socials } from "@/lib/db";
 
 const Footer = () => {
   return (
-    <div className="border-t border-black-50 py-5 flex items-center justify-between px-10 text-white w-full">
+    <div className="border-t border-black-50 py-5 flex items-center justify-between px-10 text-[#86cad9] w-full">
       <h1>Terms & Conditions</h1>
       <div className="flex items-center">
         <div className="flex space-x-5">
