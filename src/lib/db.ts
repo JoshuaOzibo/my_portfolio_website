@@ -154,6 +154,21 @@ export const Socials = {
   TikTok: "https://www.tiktok.com/@only1josh_code?_t=ZM-8slGV0Dm4er&_r=1",
 };
 
+export const HeroCardData = [
+  {
+    h1: '15',
+    p: 'Years of Experience'
+  },
+  {
+    h1: '120',
+    p: 'Satisfied Clients'
+  },
+  {
+    h1: '108',
+    p: 'Completed Projects'
+  },
+]
+
 export const words = [
   { text: "Ideas", imgPath: "/images/ideas.svg" },
   { text: "Concepts", imgPath: "/images/concepts.svg" },

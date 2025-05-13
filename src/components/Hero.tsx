@@ -1,16 +1,16 @@
 'use client'
 
 import { Particles } from "@/components/magicui/particles";
+import OverView from "@/components/OverView";
+
 export default function Hero() {
   return (
-    <section>
+    <section className="">
       <div className="relative overflow-hidden h-[700px]  pt-24 w-full">
         <Particles />
       </div>
 
-      <div>
-        <h1>hello world</h1>
-      </div>
+     <OverView />
     </section>
   );
 } 

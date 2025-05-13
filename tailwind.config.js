@@ -53,7 +53,13 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+  			'white-50': '#d9ecff',
+  			'black-50': '#1c1c21',
+  			'black-100': '#0e0e10',
+  			'black-200': '#282732',
+  			'blue-50': '#839cb5',
+  			'blue-100': '#2d2d38',
   		}
   	}
   },
