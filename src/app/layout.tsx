@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
-
+import RotatingText from "@/components/ui/RotatingText";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,6 +34,7 @@ export default function RootLayout({
         <ScrollProgress className="top-16 h-0.5" />
         {children}
         <Footer />
+        <RotatingText className="fixed bottom-8 right-8 z-50" />
       </body>
     </html>
   );
