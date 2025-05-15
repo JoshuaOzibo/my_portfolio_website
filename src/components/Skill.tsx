@@ -34,27 +34,29 @@ const Model = ({ tech }: { tech: typeof techStackIcons[0] }) => {
 
 const TechIconCardExperience = () => {
   return (
-    <section id="skills" className="py-10 mb-16 container px-6 m-auto">
-      <h2 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl font-bold text-center text-white mb-10">Tech Stack</h2>
-      <div className="flex flex-col lg:flex-row lg:flex-wrap items-center justify-center gap-8">
-        {techStackIcons.map((tech, index) => (
-          <div key={index} className="w-full lg:w-[300px] h-[300px]">
-            <Canvas>
-              <ambientLight intensity={0.3} />
-              <directionalLight position={[5, 5, 5]} intensity={1} />
-              <spotLight
-                position={[10, 15, 10]}
-                angle={0.3}
-                penumbra={1}
-                intensity={2}
-              />
-              <Environment preset="city" />
-              <Model tech={tech} />
-              <OrbitControls enableZoom={false} />
-            </Canvas>
-            <h3 className="text-center text-[#86cad9] font-bold text-2xl mt-4">{tech.name}</h3>
-          </div>
-        ))}
+    <section id="skills" className="py-10 mb-16">
+      <div className="main-container">
+        <h2 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl font-bold text-center text-white mb-10">Tech Stack</h2>
+        <div className="flex flex-col lg:flex-row lg:flex-wrap items-center justify-center gap-8">
+          {techStackIcons.map((tech, index) => (
+            <div key={index} className="w-full lg:w-[300px] h-[300px]">
+              <Canvas>
+                <ambientLight intensity={0.3} />
+                <directionalLight position={[5, 5, 5]} intensity={1} />
+                <spotLight
+                  position={[10, 15, 10]}
+                  angle={0.3}
+                  penumbra={1}
+                  intensity={2}
+                />
+                <Environment preset="city" />
+                <Model tech={tech} />
+                <OrbitControls enableZoom={false} />
+              </Canvas>
+              <h3 className="text-center text-[#86cad9] font-bold text-2xl mt-4">{tech.name}</h3>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

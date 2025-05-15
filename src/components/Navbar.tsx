@@ -8,10 +8,10 @@ const Navbar = () => {
 
   return (
     <div className="w-full z-[50] fixed flex h-16 justify-center items-center backdrop-blur-lg">
-      <div className="w-[85%] h-full items-center flex justify-between">
+      <div className="main-container h-full items-center flex justify-between">
         {/* Header */}
-        <h1 className="md:text-xl text-[#86cad9] font-[SatoshiFont] md:block sm:text-sm  font-black text-xs uppercase">
-          Dev-Joshua
+        <h1 className="md:text-xl text-[#86cad9] font-[SatoshiFont] md:block  font-black text-md uppercase">
+          Joshua
         </h1>
 
         {/* Logos and Menu */}

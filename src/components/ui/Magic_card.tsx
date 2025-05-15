@@ -51,7 +51,7 @@ const Magic_Card = ({
       onMouseMove={handleMouseMove(index)}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      className={`card card-border timeline-card rounded-xl p-5 mb-5 z-[5] relative overflow-hidden ${className}`}
+      className={`card card-border timeline-card rounded-xl mb-5 z-[5] relative overflow-hidden ${className}`}
     >
       <div className="glow"></div>
       {children}
