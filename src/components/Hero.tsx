@@ -23,7 +23,7 @@ export default function Hero() {
   return (
     <section className="">
       <div className="relative lg:h-[700px] h-screen pt-24 w-full">
-        <div className="absolute lg:flex justify-between lg:mx-20 mx-6 space-y-10 lg:space-y-0 inset-0  items-center">
+        <div className="absolute lg:flex justify-between space-y-10 lg:space-y-0 inset-0  items-center">
           <div className="lg:w-1/2 lg:m-0 m-auto w-full">
             <h1 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl mt-10 font-bold text-start pt-20 text-white">
               Turning{" "}
