@@ -5,6 +5,8 @@ import DonatePreview from "@/assets/DonatePreview.webp";
 import BlinksPreview from "@/assets/BlinksPreview.webp";
 import MrMunchPreview from "@/assets/MrMunchPreview.webp";
 import QuestionPreview from "@/assets/QuestionPreview.webp";
+import MentlyImage from "@/assets/MentlyImage.png"
+import chromeExtensionImage from '@/assets/extention images_Stay Organized – Track all your job applications, interviews, and follow-ups in one place.(purple).webp'
 
 export const projectLis = [
   {
@@ -195,6 +197,21 @@ export const techStackIcons = [
     rotation: [0, -Math.PI / 4, 0],
   },
 ];
+
+export const project =[
+  {
+    image: SwiftcareerPreview,
+    text: 'On-Demand Rides Made Simple with a Powerful, User-Friendly App called Ryde'
+  },
+  {
+    image: chromeExtensionImage,
+    text: 'On-Demand Rides Made Simple with a Powerful, User-Friendly App called Ryde'
+  },
+  {
+    image: MentlyImage,
+    text: 'On-Demand Rides Made Simple with a Powerful, User-Friendly App called Ryde'
+  },
+]
 
 export const words = [
   { text: "Ideas", imgPath: "/images/ideas.svg" },
