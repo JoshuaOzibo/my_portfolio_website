@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagicCard from "@/components/ui/Magic_card";
 import { experienceCards } from "@/lib/db";
 import { useRef } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 import SwiftcareerPreview from "@/assets/swiftcareerPreviewImage.webp";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +18,7 @@ const Experience = () => {
     const imageRef = imageRefs.current[index];
     if (imageRef) {
       gsap.to(imageRef, {
-        y: '0%',
+        y: "0%",
         duration: 0.5,
         ease: "power2.out",
       });
@@ -29,7 +29,7 @@ const Experience = () => {
     const imageRef = imageRefs.current[index];
     if (imageRef) {
       gsap.to(imageRef, {
-        y: '200%',
+        y: "200%",
         duration: 0.5,
         ease: "power2.in",
       });
@@ -46,25 +46,29 @@ const Experience = () => {
             key={index}
           >
             <div className="lg:w-1/2 w-full">
-              <MagicCard 
-                card={card} 
-                index={index} 
+              <MagicCard
+                card={card}
+                index={index}
                 className="w-full"
                 onHover={() => handleMouseEnter(index)}
                 onLeave={() => handleMouseLeave(index)}
               >
                 <div className="relative flex flex-col py-28 gap-4">
                   <div className="relative z-5">
-                    <h1 className="transition-colors duration-300 text-white">{card.title}</h1>
-                    <p className="transition-colors duration-300 text-white">{card.date}</p>
+                    <h1 className="font-semibold text-center text-3xl">
+                      {card.workedOn}
+                    </h1>
+                    <p className=" text-[#839CB5] text-center italic">
+                      {card.date}
+                    </p>
                   </div>
 
-                  <Image 
+                  <Image
                     className="absolute rounded-md inset-0 z-10 w-full h-full object-cover object-center translate-y-[200%]"
                     ref={(el) => {
                       if (el) imageRefs.current[index] = el;
                     }}
-                    src={SwiftcareerPreview.src}
+                    src={card.imgPath}
                     alt="Swiftcareer Preview"
                     fill
                   />
@@ -79,7 +83,7 @@ const Experience = () => {
                     <h1 className="font-semibold text-3xl">{card.title}</h1>
                     <p className="my-5 text-white-50">🗓️&nbsp;{card.date}</p>
                     <p className="text-[#839CB5] italic">Responsibilities</p>
-                    <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                    <ul className="list-disc ms-5 mt-5 flex flex-col gap-3 text-white-50">
                       {card.responsibilities.map((responsibility, index) => (
                         <li key={index} className="text-lg">
                           {responsibility}
@@ -87,6 +91,12 @@ const Experience = () => {
                       ))}
                     </ul>
                   </div>
+                </div>
+
+                <div className="flex gap-5 mt-5">
+                  <a href={card.liveLink} target="_blank" className="bg-white-50 text-black-50 px-5 py-2 rounded-md">
+                    Live
+                  </a>
                 </div>
               </div>
             </div>
