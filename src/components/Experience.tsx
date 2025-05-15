@@ -38,7 +38,7 @@ const Experience = () => {
 
   return (
     <section className="lg:px-10 py-20">
-      <h1 className="text-4xl font-bold text-center py-5">Experience</h1>
+      <h1 className="xl:text-6xl lg:text-5xl py-8 md:text-4xl text-3xl font-bold text-center text-white">Experience</h1>
       <div className="flex lg:mx-20 mx-6 flex-col lg:space-y-0 space-y-16 gap-4">
         {experienceCards.map((card, index) => (
           <main

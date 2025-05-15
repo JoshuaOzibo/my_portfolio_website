@@ -7,6 +7,20 @@ import ResumeImage from "@/assets/my-image.webp";
 import { WordRotate } from "@/components/magicui/word-rotate";
 
 export default function Hero() {
+
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = "/public/assets/My_Resume.pdf";
+    link.download = "Ozibo-Joshua-CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleContactOnWhatsApp = () => {
+    window.open("https://wa.me/+2347085531738", "_blank");
+  };
+
   return (
     <section className="">
       <div className="relative lg:h-[700px] h-screen pt-24 w-full">
@@ -21,25 +35,27 @@ export default function Hero() {
               into Real-World Projects That Make an Impact
             </h1>
             <p className="text-white text-sm mt-3 font-light">
-              Hi, I’m Joshua a front-end developer passionate about crafting
+              Hi, I'm Joshua a front-end developer passionate about crafting
               meaningful UIs that deliver results.
             </p>
             <p>Currently open to remote opportunities.</p>
 
             <div className="lg:flex mt-5 lg:space-x-5 space-x-0 space-y-5 lg:space-y-0 lg:mx-0 w-full block gap-2">
-              <div className="m-auto w-full lg:m-0">
-                <button className="bg-white w-full  text-black px-4 py-2 rounded-md">
+              <div  className="m-auto w-full lg:m-0">
+                  <button onClick={handleDownloadResume} className="bg-white w-full text-black px-4 py-2 rounded-md">
                   Download Resume
                 </button>
               </div>
 
-              <div className="m-auto w-full lg:m-0">
-                <button className="bg-white w-full text-black px-4 py-2 rounded-md">
-                  Download Resume
+              <div  className="m-auto w-full lg:m-0">
+                <button onClick={handleContactOnWhatsApp} className="bg-white w-full text-black px-4 py-2 rounded-md">
+                  Contact on WhatsApp
                 </button>
               </div>
             </div>
           </div>
+
+          
 
           <Image
             src={ResumeImage}

@@ -8,6 +8,10 @@ import { MdEmail } from "react-icons/md";
 import { Socials } from "@/lib/db";
 
 const Footer = () => {
+  const handleEmailContact = () => {
+    window.location.href = "mailto:joshuamichaelozibo@gmail.com";
+  };
+
   return (
     <div className="border-t z-10 border-black-50 py-5 space-y-3 md:space-y-0 md:flex items-center justify-center md:justify-between px-10 text-[#86cad9] w-full">
       <h1 className="text-center md:text-left">Terms & Conditions</h1>
@@ -37,12 +41,12 @@ const Footer = () => {
           >
             <FaInstagramSquare color="#fff" size={30} />
           </a>
-          <a
-            href="mailto:joshuamichaelozibo@gmail.com"
+          <button
+            onClick={handleEmailContact}
             className="border border-black-50 p-2 transition-all duration-150 rounded-md"
           >
             <MdEmail color="#fff" size={30} />
-          </a>
+          </button>
         </div>
       </div>
       <p className="text-center md:text-right">
