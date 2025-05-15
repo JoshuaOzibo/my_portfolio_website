@@ -37,9 +37,9 @@ const Experience = () => {
   };
 
   return (
-    <section className="px-10 py-20">
+    <section className="lg:px-10 py-20">
       <h1 className="text-4xl font-bold text-center py-5">Experience</h1>
-      <div className="flex mx-20 flex-col lg:space-y-0 space-y-16 gap-4">
+      <div className="flex lg:mx-20 mx-6 flex-col lg:space-y-0 space-y-16 gap-4">
         {experienceCards.map((card, index) => (
           <main
             className="w-full lg:flex justify-center gap-20 items-center"
@@ -94,7 +94,11 @@ const Experience = () => {
                 </div>
 
                 <div className="flex gap-5 mt-5">
-                  <a href={card.liveLink} target="_blank" className="bg-white-50 text-black-50 px-5 py-2 rounded-md">
+                  <a
+                    href={card.liveLink}
+                    target="_blank"
+                    className="bg-white-50 text-black-50 px-5 py-2 rounded-md"
+                  >
                     Live
                   </a>
                 </div>

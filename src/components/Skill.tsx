@@ -34,7 +34,7 @@ const Model = ({ tech }: { tech: typeof techStackIcons[0] }) => {
 
 const TechIconCardExperience = () => {
   return (
-    <section className="py-10 container px-6 m-auto">
+    <section className="py-10 mb-16 container px-6 m-auto">
       <h2 className="text-center text-white text-4xl font-bold mb-10">Tech Stack</h2>
       <div className="flex flex-col lg:flex-row lg:flex-wrap items-center justify-center gap-8">
         {techStackIcons.map((tech, index) => (
