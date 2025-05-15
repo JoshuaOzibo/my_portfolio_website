@@ -38,7 +38,7 @@ const Experience = () => {
     <section className="py-20">
       <div className="main-container">
         <h1 className="xl:text-6xl lg:text-5xl py-8 md:text-4xl text-3xl font-bold text-center text-white">Experience</h1>
-        <div className="flex flex-col lg:space-y-0 space-y-16 gap-4">
+        <div className="flex flex-col lg:space-y-0 space-y-24 gap-4">
           {experienceCards.map((card, index) => (
             <main
               className="w-full lg:flex justify-center gap-20 items-center"
@@ -52,7 +52,7 @@ const Experience = () => {
                   onHover={() => handleMouseEnter(index)}
                   onLeave={() => handleMouseLeave(index)}
                 >
-                  <div className="relative flex flex-col py-28 gap-4">
+                  <div className="relative flex flex-col lg:py-40 py-44 gap-4">
                     <div className="relative z-5">
                       <h1 className="font-semibold text-center text-3xl">
                         {card.workedOn}
