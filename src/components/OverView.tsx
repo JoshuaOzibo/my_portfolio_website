@@ -19,7 +19,7 @@ const OverView = () => {
   }, []);
 
   return (
-    <section className="z-[1] py-10 lg:mt-0 mt-20">
+    <section className="z-[1] lg:mx-10 px-6 py-10 lg:mt-0 md:mt-5 mt-48 ">
        <div className="flex justify-center gap-5 items-center">
         {HeroCardData.slice(0, isMobile ? 1 : HeroCardData.length).map((card, index) => (
           <MagicCard card={{card}} className="h-[180px] mx-6 z-[5] w-[500px] bg-[#18181b] " index={index} key={index}>

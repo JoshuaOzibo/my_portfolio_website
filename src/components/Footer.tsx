@@ -13,9 +13,9 @@ const Footer = () => {
   };
 
   return (
-    <div className="border-t z-10 border-black-50 py-5 space-y-3 md:space-y-0 md:flex items-center justify-center md:justify-between px-10 text-[#86cad9] w-full">
-      <h1 className="text-center md:text-left">Terms & Conditions</h1>
-      <div className="flex items-center">
+    <div className="border-t z-10 border-black-50 py-5 space-y-3 lg:space-y-0 lg:flex items-center justify-center lg:justify-between px-10 text-[#86cad9] w-full">
+      <h1 className="text-center lg:text-left">Terms & Conditions</h1>
+      <div className="flex justify-center items-center">
         <div className="flex space-x-5 md:m-0 m-auto">
           <a
             href={Socials.Github}
@@ -49,7 +49,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <p className="text-center md:text-right">
+      <p className="text-center lg:text-right">
         &copy; {new Date().getFullYear()} Ozibo Joshua. All rights reserved.
       </p>
     </div>

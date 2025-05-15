@@ -40,7 +40,7 @@ export default function Hero() {
             </p>
             <p>Currently open to remote opportunities.</p>
 
-            <div className="lg:flex mt-5 lg:space-x-5 space-x-0 space-y-5 lg:space-y-0 lg:mx-0 w-full block gap-2">
+            <div className="lg:flex mb-10 lg:mb-0 mt-5 lg:space-x-5 space-x-0 space-y-5 lg:space-y-0 lg:mx-0 w-full block gap-2">
               <div  className="m-auto w-full lg:m-0">
                   <button onClick={handleDownloadResume} className="bg-white w-full text-black px-4 py-2 rounded-md">
                   Download Resume
@@ -67,7 +67,7 @@ export default function Hero() {
         </div>
         <Particles className="h-full" />
       </div>
-      <OverView />
+      
     </section>
   );
 }
