@@ -1,13 +1,11 @@
 "use client";
 
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagicCard from "@/components/ui/Magic_card";
 import { experienceCards } from "@/lib/db";
 import { useRef } from "react";
 import Image from "next/image";
-import SwiftcareerPreview from "@/assets/swiftcareerPreviewImage.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { MdOutlineNightlightRound } from "react-icons/md";
+"use client";
+
+import React from "react";
 import { LiaGithub } from "react-icons/lia";
-import { MdOutlineLightMode } from "react-icons/md";
 import { Socials } from "@/lib/db";
 
 const Navbar = () => {

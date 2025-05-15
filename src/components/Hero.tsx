@@ -1,7 +1,6 @@
 "use client";
 
 import { Particles } from "@/components/magicui/particles";
-import OverView from "@/components/OverView";
 import Image from "next/image";
 import ResumeImage from "@/assets/my-image.webp";
 import { WordRotate } from "@/components/magicui/word-rotate";
