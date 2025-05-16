@@ -22,7 +22,7 @@ export default function Hero() {
 
   return (
     <section className="lg:mt-0 ">
-      <div className="main-container">
+      <div className="lg:mx-20 mx-6">
         <div className="relative lg:h-[700px] h-screen pt-24">
           <div className="absolute lg:flex justify-between space-y-10 lg:space-y-0 inset-0 items-center">
             <div className="lg:w-1/2 lg:m-0 w-full">
