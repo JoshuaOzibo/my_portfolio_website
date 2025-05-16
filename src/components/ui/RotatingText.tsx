@@ -8,7 +8,7 @@ interface RotatingTextProps {
 
 export default function RotatingText({ className }: RotatingTextProps) {
   return (
-    <div className={cn("relative md:h-24 md:w-24 h-20 w-20 z-50", className)}>
+    <div className={cn("fixed md:h-24 md:w-24 h-20 w-20", className)} style={{ zIndex: 9999 }}>
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

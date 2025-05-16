@@ -28,13 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white relative`}
       >
         <Navbar />
         <ScrollProgress className="top-16 h-0.5" />
         {children}
         <Footer />
-        <RotatingText className="fixed bottom-8 right-8 z-50" />
+        <RotatingText className="fixed bottom-8 right-8" />
       </body>
     </html>
   );
