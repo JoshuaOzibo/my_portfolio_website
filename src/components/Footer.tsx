@@ -13,7 +13,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="border-t z-10 border-black-50 py-5 space-y-3 lg:space-y-0 lg:flex items-center justify-center lg:justify-between px-10 text-[#86cad9] w-full">
+    <div className="border-t border-black-50 py-5 space-y-3 lg:space-y-0 lg:flex items-center justify-center lg:justify-between px-10 text-[#86cad9] w-full">
       <h1 className="text-center lg:text-left">Terms & Conditions</h1>
       <div className="flex justify-center items-center">
         <div className="flex space-x-5 md:m-0 m-auto">

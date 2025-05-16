@@ -77,7 +77,7 @@ const Experience = () => {
 
               <div className="lg:w-1/2 w-full">
                 <div className="">
-                  <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
+                  <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative">
                     <div>
                       <h1 className="font-semibold text-3xl">{card.title}</h1>
                       <p className="my-5 text-white-50">🗓️&nbsp;{card.date}</p>
