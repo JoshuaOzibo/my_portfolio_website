@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Joshua-Portfolio",
-  description: "Personal portfolio showcasing my work and experience",
+  description: "My Personal portfolio showcasing my work and experience",
 };
 
 export default function RootLayout({
@@ -34,7 +34,7 @@ export default function RootLayout({
         <ScrollProgress className="top-16 h-0.5" />
         {children}
         <Footer />
-        <RotatingText className="fixed bottom-8 right-8" />
+        <RotatingText className="fixed bottom-20 right-6" />
       </body>
     </html>
   );

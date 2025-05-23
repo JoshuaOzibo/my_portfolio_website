@@ -8,67 +8,78 @@ import QuestionPreview from "@/assets/QuestionPreview.webp";
 import MentlyImage from "@/assets/MentlyImage.png";
 import chromeExtensionImage from "@/assets/extention images_Stay Organized – Track all your job applications, interviews, and follow-ups in one place.(purple).webp";
 import BorookPreviewImage from "@/assets/BorookUi.png";
-export const projectLis = [
-  {
-    id: 1,
-    Image: MrMunchPreview,
-    header: "Mr Munch",
-    description: `I developed a snacks website from the ground up using react js, designed to simplify the management and display of snack offerings. This dynamic web application enables the owner to effortlessly create, update, read, and delete snack items, while providing customers with an intuitive interface to browse the available snacks.`,
-    liveUrl: "https://dazzling-lokum-b3b899.netlify.app/",
-    githubUrl: "https://github.com/JoshuaOzibo/mr-munch-snacks-app",
-  },
-  {
-    id: 2,
-    Image: BlinksPreview,
-    header: "Blinks App",
-    description: `I designed Blinks website using bootstrap and little javascript, a visually stunning website interface crafted with care to showcase elegance and creativity. While this project focuses solely on the aesthetic aspect and is not yet functional, it demonstrates the potential for a fully immersive user experience.`,
-    liveUrl:
-      "https://65ba5e387e7101eb6dfafaa1--meek-tarsier-7da7eb.netlify.app/",
-    githubUrl: "https://github.com/JoshuaOzibo/My-Food-App",
-  },
-  {
-    id: 3,
-    Image: DonatePreview,
-    header: "Donate Platform",
-    description: `I developed an orphanage website designed to foster trust and transparency between the organization and its donors. This project focuses on creating an engaging platform where users can see real-time updates on donations, including pop-up messages displaying donor names and contributions.`,
-    liveUrl: "https://prismatic-croquembouche-29970f.netlify.app/",
-    githubUrl:
-      "https://github.com/JoshuaOzibo/Life-Donate-school-group-project",
-  },
-  {
-    id: 4,
-    Image: AltschoolClonePreview,
-    header: "Altschool Clone",
-    description: `As part of my second-year coursework and driven by my admiration for AltSchool, I successfully replicated their website using just React js. This project not only reflects my technical skills but also serves as a tribute to the institution that inspires my educational journey.`,
-    liveUrl: "https://sage-meerkat-6d3f72.netlify.app/",
-    githubUrl: "https://github.com/JoshuaOzibo/Alt-Schools-Clone",
-  },
-  {
-    id: 5,
-    Image: QuestionPreview,
-    header: "Quiz App",
-    description: `I developed a fully functional quiz application from scratch using React js, and Firebase. This project is designed to provide users with an engaging and interactive platform to test their knowledge and track their performance.`,
-    liveUrl:
-      "https://65ba59e7225667e94bab3e2d--lucent-moonbeam-bde399.netlify.app/",
-    githubUrl: "https://github.com/JoshuaOzibo/Quiz-app",
-  },
-  {
-    id: 6,
-    Image: UrlShortnerPreview,
-    header: "URL Shortener",
-    description: `I developed a feature-rich URL shortener application that empowers users to transform long, cumbersome URLs into concise, shareable links. Beyond just shortening links, this app provides comprehensive activity tracking and customization options, offering a seamless user experience. includes react js, typescript and tailwind css for the frontend, while on the backend i used express js, node js, firebase,`,
-    liveUrl: "https://thriving-gumption-6dce4b.netlify.app/",
-    githubUrl: "https://github.com/JoshuaOzibo/capstone-project",
-  },
-  {
-    id: 7,
-    Image: SwiftcareerPreview,
-    header: "Swiftcareer",
-    description: `I designed and developed a feature-rich website for SwiftCareer.co using react js, tailwind css and gsap for animations, combining modern design principles with powerful functionality to empower users in their career journey. The project not only showcases my skills in web development but also highlights my contributions to the platform's core tools and extensions.`,
-    liveUrl: "https://jade-parfait-8a5d6d.netlify.app/",
-    githubUrl: "",
-  },
-];
+
+// skills Svgicons 
+import NextJsImage from "@/assets/Skills/next-js.svg";
+import ReactImage from "@/assets/Skills/react-2.svg";
+import TypescriptImage from "@/assets/Skills/typescript-2.svg";
+import GitImage from "@/assets/Skills/github-icon-2.svg";
+import TailwindImage from "@/assets/Skills/tailwind-css-2.svg";
+
+
+
+
+// export const projectLis = [
+//   {
+//     id: 1,
+//     Image: MrMunchPreview,
+//     header: "Mr Munch",
+//     description: `I developed a snacks website from the ground up using react js, designed to simplify the management and display of snack offerings. This dynamic web application enables the owner to effortlessly create, update, read, and delete snack items, while providing customers with an intuitive interface to browse the available snacks.`,
+//     liveUrl: "https://dazzling-lokum-b3b899.netlify.app/",
+//     githubUrl: "https://github.com/JoshuaOzibo/mr-munch-snacks-app",
+//   },
+//   {
+//     id: 2,
+//     Image: BlinksPreview,
+//     header: "Blinks App",
+//     description: `I designed Blinks website using bootstrap and little javascript, a visually stunning website interface crafted with care to showcase elegance and creativity. While this project focuses solely on the aesthetic aspect and is not yet functional, it demonstrates the potential for a fully immersive user experience.`,
+//     liveUrl:
+//       "https://65ba5e387e7101eb6dfafaa1--meek-tarsier-7da7eb.netlify.app/",
+//     githubUrl: "https://github.com/JoshuaOzibo/My-Food-App",
+//   },
+//   {
+//     id: 3,
+//     Image: DonatePreview,
+//     header: "Donate Platform",
+//     description: `I developed an orphanage website designed to foster trust and transparency between the organization and its donors. This project focuses on creating an engaging platform where users can see real-time updates on donations, including pop-up messages displaying donor names and contributions.`,
+//     liveUrl: "https://prismatic-croquembouche-29970f.netlify.app/",
+//     githubUrl:
+//       "https://github.com/JoshuaOzibo/Life-Donate-school-group-project",
+//   },
+//   {
+//     id: 4,
+//     Image: AltschoolClonePreview,
+//     header: "Altschool Clone",
+//     description: `As part of my second-year coursework and driven by my admiration for AltSchool, I successfully replicated their website using just React js. This project not only reflects my technical skills but also serves as a tribute to the institution that inspires my educational journey.`,
+//     liveUrl: "https://sage-meerkat-6d3f72.netlify.app/",
+//     githubUrl: "https://github.com/JoshuaOzibo/Alt-Schools-Clone",
+//   },
+//   {
+//     id: 5,
+//     Image: QuestionPreview,
+//     header: "Quiz App",
+//     description: `I developed a fully functional quiz application from scratch using React js, and Firebase. This project is designed to provide users with an engaging and interactive platform to test their knowledge and track their performance.`,
+//     liveUrl:
+//       "https://65ba59e7225667e94bab3e2d--lucent-moonbeam-bde399.netlify.app/",
+//     githubUrl: "https://github.com/JoshuaOzibo/Quiz-app",
+//   },
+//   {
+//     id: 6,
+//     Image: UrlShortnerPreview,
+//     header: "URL Shortener",
+//     description: `I developed a feature-rich URL shortener application that empowers users to transform long, cumbersome URLs into concise, shareable links. Beyond just shortening links, this app provides comprehensive activity tracking and customization options, offering a seamless user experience. includes react js, typescript and tailwind css for the frontend, while on the backend i used express js, node js, firebase,`,
+//     liveUrl: "https://thriving-gumption-6dce4b.netlify.app/",
+//     githubUrl: "https://github.com/JoshuaOzibo/capstone-project",
+//   },
+//   {
+//     id: 7,
+//     Image: SwiftcareerPreview,
+//     header: "Swiftcareer",
+//     description: `I designed and developed a feature-rich website for SwiftCareer.co using react js, tailwind css and gsap for animations, combining modern design principles with powerful functionality to empower users in their career journey. The project not only showcases my skills in web development but also highlights my contributions to the platform's core tools and extensions.`,
+//     liveUrl: "https://jade-parfait-8a5d6d.netlify.app/",
+//     githubUrl: "",
+//   },
+// ];
 
 export const skillsList = [
   {
@@ -173,28 +184,29 @@ export const HeroCardData = [
 
 export const techStackIcons = [
   {
-    name: "React Developer",
+    name: "React js",
     modelPath: "/models/react_logo-transformed.glb",
-    scale: 1,
-    rotation: [0, 0, 0],
+    image: ReactImage
   },
   {
-    name: "Python Developer",
+    name: "Next js",
     modelPath: "/models/python-transformed.glb",
-    scale: 0.8,
-    rotation: [0, 0, 0],
+    image: NextJsImage
   },
   {
-    name: "Backend Developer",
+    name: "Typescript",
     modelPath: "/models/node-transformed.glb",
-    scale: 5,
-    rotation: [0, -Math.PI / 2, 0],
+    image: TypescriptImage
   },
   {
-    name: "Project Manager",
+    name: "GitHub",
     modelPath: "/models/git-svg-transformed.glb",
-    scale: 0.05,
-    rotation: [0, -Math.PI / 4, 0],
+    image: GitImage
+  },
+  {
+    name: "Tailwind Css",
+    modelPath: "/models/Next_Js_Image.glb",
+    image: TailwindImage
   },
 ];
 
