@@ -1,3 +1,4 @@
+import PostGeneratorPreview from "@/assets/ai_powered_content_creator.webp";
 import SwiftcareerPreview from "@/assets/swiftcareerPreviewImage.webp";
 import UrlShortnerPreview from "@/assets/UrlShortnerPreview.webp";
 import AltschoolClonePreview from "@/assets/AltschoolClonePreview.webp";
@@ -227,6 +228,18 @@ export const project = [
 
 export const experienceCards = [
   {
+    imgPath: PostGeneratorPreview,
+    workedOn: "AI-Powered Content Creation App",
+    title: "Full Stack Development",
+    date: "September 2025 - Present",
+    liveLink: 'https://social-media-post-generator-delta.vercel.app/',
+    responsibilities: [
+      "Built with Next.js, TypeScript, and Node.js for scalable full-stack development",
+      "Allows users to input post ideas, schedule posts by day, and toggle hashtags and images.",
+      "Integrated Google Gemini and Unsplash API to automate text and image creation.",
+    ],
+  },
+  {
     imgPath: SwiftcareerPreview,
     workedOn: "SwiftCareer Website",
     title: "Frontend Developer",
@@ -255,7 +268,7 @@ export const experienceCards = [
     workedOn: "Borook Website",
     title: "React Developer",
     date: "February 2025",
-    liveLink: '***',
+    liveLink: 'https://boorook-website.onrender.com/',
     responsibilities: [
       "Developed the Borook website for a client based on a detailed Figma design, ensuring pixel-perfect implementation.",
       "Used GSAP to create smooth, high-performance animations that enhanced user experience.",

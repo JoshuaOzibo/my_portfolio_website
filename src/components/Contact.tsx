@@ -7,7 +7,6 @@ export default function Contact() {
           <p className="text-gray-300 mb-8">
             I'm always open to new opportunities and collaborations. Feel free to reach out!
           </p>
-          {/* Add your contact form or contact information here */}
         </div>
       </div>
     </section>
