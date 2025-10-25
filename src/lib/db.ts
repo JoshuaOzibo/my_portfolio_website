@@ -240,6 +240,19 @@ export const experienceCards = [
     ],
   },
   {
+    imgPath: BorookPreviewImage,
+    workedOn: "Borook Website",
+    title: "React Developer",
+    date: "February 2025",
+    liveLink: 'https://boorook-website.onrender.com/',
+    responsibilities: [
+      "Developed the Borook website for a client based on a detailed Figma design, ensuring pixel-perfect implementation.",
+      "Used GSAP to create smooth, high-performance animations that enhanced user experience.",
+      "Built responsive layouts that remained consistent across different devices and screen sizes.",
+      "Optimized the site for performance, improving load times and animation fluidity.",
+    ],
+  },
+  {
     imgPath: SwiftcareerPreview,
     workedOn: "SwiftCareer Website",
     title: "Frontend Developer",
@@ -263,17 +276,5 @@ export const experienceCards = [
       "Ensured a seamless user experience through clean UI and efficient browser interactions.",
     ],
   },
-  {
-    imgPath: BorookPreviewImage,
-    workedOn: "Borook Website",
-    title: "React Developer",
-    date: "February 2025",
-    liveLink: 'https://boorook-website.onrender.com/',
-    responsibilities: [
-      "Developed the Borook website for a client based on a detailed Figma design, ensuring pixel-perfect implementation.",
-      "Used GSAP to create smooth, high-performance animations that enhanced user experience.",
-      "Built responsive layouts that remained consistent across different devices and screen sizes.",
-      "Optimized the site for performance, improving load times and animation fluidity.",
-    ],
-  },
+  
 ];
