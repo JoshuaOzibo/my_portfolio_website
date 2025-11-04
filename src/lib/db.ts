@@ -257,7 +257,7 @@ export const experienceCards = [
     workedOn: "SwiftCareer Website",
     title: "Frontend Developer",
     date: "January 2024 - Present",
-    liveLink: 'https://swiftcareer.co/',
+    liveLink: 'https://swiftcareer-website-x1lz.onrender.com/',
     responsibilities: [
       "Designed and implemented the SwiftCareer Job searching website with a strong focus on performance and usability.",
       "Collaborated on the SwiftCareer web app, contributing key components and functionality.",
