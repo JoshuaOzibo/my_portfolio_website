@@ -58,10 +58,24 @@ module.exports = {
   			'black-50': '#1c1c21',
   			'black-100': '#0e0e10',
   			'black-200': '#282732',
-  			'blue-50': '#839cb5',
-  			'blue-100': '#2d2d38',
-  		}
-  	}
+			'blue-50': '#839cb5',
+			'blue-100': '#2d2d38',
+			sidebar: {
+				background: 'hsl(var(--sidebar-background))',
+				foreground: 'hsl(var(--sidebar-foreground))',
+				primary: {
+					DEFAULT: 'hsl(var(--sidebar-primary))',
+					foreground: 'hsl(var(--sidebar-primary-foreground))'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--sidebar-accent))',
+					foreground: 'hsl(var(--sidebar-accent-foreground))'
+				},
+				border: 'hsl(var(--sidebar-border))',
+				ring: 'hsl(var(--sidebar-ring))'
+			}
+		}
+	}
   },
   plugins: [require("tailwindcss-animate")],
 }; 

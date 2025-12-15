@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { ScrollProgress } from "@/components/magicui/scroll-progress";
-import RotatingText from "@/components/ui/RotatingText";
+import IntroWrapper from "@/components/animations/IntroWrapper";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,11 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white relative`}
       >
-        <Navbar />
-        <ScrollProgress className="top-16 h-0.5" />
-        {children}
-        <Footer />
-        <RotatingText className="fixed bottom-20 right-6" />
+        <IntroWrapper>{children}</IntroWrapper>
       </body>
     </html>
   );
