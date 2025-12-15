@@ -1,11 +1,11 @@
 import PostGeneratorPreview from "@/assets/ai_powered_content_creator.webp";
 import SwiftcareerPreview from "@/assets/swiftcareerPreviewImage.webp";
-import UrlShortnerPreview from "@/assets/UrlShortnerPreview.webp";
-import AltschoolClonePreview from "@/assets/AltschoolClonePreview.webp";
-import DonatePreview from "@/assets/DonatePreview.webp";
-import BlinksPreview from "@/assets/BlinksPreview.webp";
-import MrMunchPreview from "@/assets/MrMunchPreview.webp";
-import QuestionPreview from "@/assets/QuestionPreview.webp";
+// import UrlShortnerPreview from "@/assets/UrlShortnerPreview.webp";
+// import AltschoolClonePreview from "@/assets/AltschoolClonePreview.webp";
+// import DonatePreview from "@/assets/DonatePreview.webp";
+// import BlinksPreview from "@/assets/BlinksPreview.webp";
+// import MrMunchPreview from "@/assets/MrMunchPreview.webp";
+// import QuestionPreview from "@/assets/QuestionPreview.webp";
 import MentlyImage from "@/assets/MentlyImage.png";
 import chromeExtensionImage from "@/assets/extention images_Stay Organized – Track all your job applications, interviews, and follow-ups in one place.(purple).webp";
 import BorookPreviewImage from "@/assets/BorookUi.png";
@@ -213,16 +213,16 @@ export const techStackIcons = [
 
 export const project = [
   {
+    image: PostGeneratorPreview,
+    text: "Full Stack Development",
+  },
+  {
+    image: BorookPreviewImage,
+    text: "React Developer",
+  },
+  {
     image: SwiftcareerPreview,
-    text: "Landing Your Dream Job Just Got Smarter with SwiftCareer.",
-  },
-  {
-    image: chromeExtensionImage,
-    text: "Stay in Sync with Every Application, SwiftCareer Chrome Extension Makes Job Tracking Effortless.",
-  },
-  {
-    image: MentlyImage,
-    text: "Figma to Code, Pixel-Perfect Implementation of UI Test, Rebuilt Exactly as Designed in Figma",
+    text: "Frontend Developer",
   },
 ];
 

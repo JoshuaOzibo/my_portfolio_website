@@ -6,7 +6,7 @@ const TechIconCardExperience = () => {
   return (
     <section id="skills" className="py-10 mb-16">
       <div className="lg:mx-10 mx-6">
-        <h2 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl font-bold text-center text-white mb-12">
+        <h2 className="xl:text-6xl lg:text-5xl md:text-4xl gradient-text text-3xl font-bold text-center text-white mb-12">
           Tech Stack
         </h2>
         <div className=" grid xl:grid-cols-5 lg:grid-cols-2 grid-cols-1 gap-10">

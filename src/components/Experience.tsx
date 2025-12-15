@@ -37,7 +37,7 @@ const Experience = () => {
   return (
     <section className="py-20">
       <div className="lg:mx-20 mx-6">
-        <h1 className="xl:text-6xl lg:text-5xl py-8 md:text-4xl text-3xl font-bold text-center text-white">Experience</h1>
+        <h1 className="xl:text-6xl lg:text-5xl py-8 md:text-4xl text-3xl font-bold text-center text-white gradient-text">Experience</h1>
         <div className="flex flex-col lg:space-y-0 space-y-24 gap-4">
           {experienceCards.map((card, index) => (
             <main
@@ -46,7 +46,6 @@ const Experience = () => {
             >
               <div className="lg:w-1/2 w-full">
                 <MagicCard
-                  card={card}
                   index={index}
                   className="w-full"
                   onHover={() => handleMouseEnter(index)}
