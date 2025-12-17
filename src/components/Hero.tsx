@@ -105,7 +105,7 @@ export default function Hero() {
     <section className="lg:mt-0 z-10" ref={container}>
       <div className="lg:mx-20 mx-6">
         <div className="relative lg:h-[700px] h-screen pt-24">
-          <div className="absolute lg:flex justify-between space-y-10 lg:space-y-0 inset-0 items-center">
+          <div className="absolute lg:flex md:justify-between justify-center space-y-10 lg:space-y-0 inset-0 items-center">
             <div ref={leftContent} className="lg:w-1/2 lg:m-0 w-full">
               <h1
                 ref={headingRef}
@@ -163,7 +163,7 @@ export default function Hero() {
             <div ref={rightContent} className="lg:mx-0 mx-auto">
               <Image
                 src={ResumeImage}
-                className="rounded-full"
+                className="rounded-full m-auto lg:mx-0 mx-auto"
                 width={350}
                 height={350}
                 alt="ResumeImage"
