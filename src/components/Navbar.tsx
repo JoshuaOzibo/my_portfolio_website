@@ -34,7 +34,7 @@ const Navbar = () => {
 
         <div className=" space-x-5 rounded-full duration-150 cursor-pointer px-[4px] py-[4px] md:hidden flex justify-between items-center bg-black">
           <a href="#">
-            <h1 className="text-sm text-[#d9ecff] font-[SatoshiFont] cursor-pointer font-semibold gradient-text">
+            <h1 className="text-sm  text-[#d9ecff] font-[SatoshiFont] cursor-pointer font-semibold gradient-text">
               Home
             </h1>
           </a>

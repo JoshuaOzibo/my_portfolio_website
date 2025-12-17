@@ -11,7 +11,7 @@ export default function Projects() {
             Featured Work
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3">
-            My <span className="gradient-text">Projects</span>
+            My <span className="gradient-text"> Favorite </span> Projects
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             A curated collection of projects showcasing my expertise in building
@@ -25,7 +25,7 @@ export default function Projects() {
                 src={project[0].image}
                 alt={project[0].text}
                 fill
-                className="object-contain transition-transform duration-700 group-hover:scale-105"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute inset-0 flex items-end p-6 md:p-8 lg:p-10">
@@ -54,7 +54,7 @@ export default function Projects() {
                     src={item.image}
                     alt={item.text}
                     fill
-                    className="object-contain transition-transform duration-700 group-hover:scale-105"
+                    className="object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute inset-0 flex items-end p-6 md:p-8">
