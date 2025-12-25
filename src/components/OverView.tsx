@@ -90,9 +90,9 @@ const OverView = () => {
   return (
     <section
       ref={sectionRef}
-      className="z-[1] w-full py-10 lg:mt-0 md:mt-5 mt-48"
+      className="z-[1] w-full py-10 lg:mt-0 md:mt-5 mt-24"
     >
-      <div className="lg:mx-20 mx-6">
+      <div className="lg:mx-20 mx-6 sm:mt-24">
         <div className="flex gap-5 items-center">
           {HeroCardData.slice(0, isMobile ? 1 : HeroCardData.length).map(
             (card, index) => (

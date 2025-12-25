@@ -160,7 +160,10 @@ export default function Hero() {
               </div>
             </div>
 
-            <div ref={rightContent} className="lg:mx-0 mx-auto">
+            <div ref={rightContent} className="lg:mx-0 w-[350px] h-[350px] mx-auto rounded-full" 
+            style={{
+            boxShadow: '0 0 40px hsl(175 70% 50% / 0.5)',
+          }}>
               <Image
                 src={ResumeImage}
                 className="rounded-full m-auto lg:mx-0 mx-auto"
