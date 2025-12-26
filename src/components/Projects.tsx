@@ -34,7 +34,10 @@ export default function Projects() {
                     {project[0].text}
                   </h3>
                   <div className="flex gap-2 mt-4">
-                    <button className="px-4 py-1.5 text-sm font-medium bg-primary/20 text-primary rounded-full border border-primary/30">
+                    <button onClick={() => {
+                      const element = document.getElementById(project[0].text.replace(/\s+/g, "-").toLowerCase());
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }} className="px-4 py-1.5 text-sm font-medium bg-primary/20 text-primary rounded-full border border-primary/30">
                       View Project
                     </button>
                   </div>
@@ -63,7 +66,10 @@ export default function Projects() {
                         {item.text}
                       </h3>
                       <div className="flex gap-2 mt-4">
-                        <button className="px-3 py-1.5 text-xs md:text-sm font-medium bg-primary/20 text-primary rounded-full border border-primary/30">
+                        <button onClick={() => {
+                          const element = document.getElementById(item.text.replace(/\s+/g, "-").toLowerCase());
+                          element?.scrollIntoView({ behavior: "smooth" });
+                        }} className="px-3 py-1.5 text-xs md:text-sm font-medium bg-primary/20 text-primary rounded-full border border-primary/30">
                           View Project
                         </button>
                       </div>

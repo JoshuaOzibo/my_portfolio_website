@@ -43,6 +43,7 @@ const Experience = () => {
             <main
               className="w-full lg:flex justify-center gap-20 items-center"
               key={index}
+              id={card.title.replace(/\s+/g, "-").toLowerCase()}
             >
               <div className="lg:w-1/2 w-full">
                 <MagicCard
