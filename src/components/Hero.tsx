@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ResumeImage from "@/assets/hero-dark copy.png";
 import {
@@ -13,7 +14,7 @@ import {
   SiBootstrap, SiMongodb, SiVercel,
 } from "react-icons/si";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const LETTERS = ["J", "O", "S", "H", "U", "A"];
 
@@ -69,6 +70,15 @@ export default function Hero() {
         .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.65 }, "-=0.3")
         .to(scrollRef.current,   { opacity: 1, y: 0, duration: 0.9, ease: "power2.out"  }, "-=0.25")
         .to(marqueeRef.current,  { opacity: 1, y: 0, duration: 0.7  }, "-=0.4");
+
+      // ── Pin the hero so AboutSlide can slide over it ──
+      ScrollTrigger.create({
+        trigger: container.current,
+        pin: true,
+        pinSpacing: false,   // no extra space — About slides up naturally
+        start: "top top",
+        end: "bottom top",   // hero stays pinned for one viewport of scroll
+      });
     },
     { scope: container }
   );
@@ -112,6 +122,7 @@ export default function Hero() {
         id="home"
         style={{
           position: "relative",
+          zIndex: 10,
           width: "100%",
           height: "100dvh",
           overflow: "hidden",
