@@ -4,7 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import ResumeImage from "@/assets/my-image.webp";
+import ResumeImage from "@/assets/hero-dark copy.png";
 
 gsap.registerPlugin(useGSAP);
 
@@ -60,7 +60,7 @@ export default function Hero() {
           alt="Joshua Ozibo"
           fill
           priority
-          style={{ objectFit: "cover", objectPosition: "center 15%" }}
+          style={{ objectFit: "cover", objectPosition: "center top" }}
         />
       </div>
 
@@ -69,13 +69,15 @@ export default function Hero() {
         ref={overlayRef}
         style={{ position: "absolute", inset: 0, zIndex: 2, opacity: 0 }}
       >
+        {/* Subtle bottom gradient to ground the text */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.72) 100%)",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 30%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%)",
         }} />
+        {/* Subtle side vignettes */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.45) 100%)",
+          background: "linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.35) 100%)",
         }} />
       </div>
 
