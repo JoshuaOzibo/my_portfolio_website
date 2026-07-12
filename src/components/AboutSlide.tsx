@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const ABOUT_TEXT =
-  "I am Joshua Ozibo, a Front-End Developer & UI Engineer with over 4 years of hands-on experience crafting fast, accessible, and visually stunning web experiences.";
+  "I am Joshua Ozibo, a Fullstack Developer & UI Engineer with over 4 years of hands-on experience crafting fast, accessible, and visually stunning web experiences.";
 
 export default function AboutSlide() {
   const panelRef  = useRef<HTMLDivElement>(null);

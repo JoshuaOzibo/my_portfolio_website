@@ -206,7 +206,7 @@ export default function Hero() {
               opacity: 0,
             }}
           >
-            Front-End Developer &amp; UI Engineer based in Nigeria
+            Fullstack Developer &amp; UI Engineer based in Nigeria
           </p>
         </div>
 
