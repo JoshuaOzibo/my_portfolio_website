@@ -2,7 +2,7 @@ import Hero from '@/components/Hero'
 import AboutSlide from '@/components/AboutSlide'
 import ApproachSlide from '@/components/ApproachSlide'
 import Experience from '@/components/Experience'
-import Skill from '@/components/Skill'
+import Contact from '@/components/Contact'
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <AboutSlide />
       <ApproachSlide />
       <Experience />
-      <Skill />
+      <Contact />
     </main>
   )
 }
