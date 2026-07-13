@@ -249,67 +249,7 @@ export default function Contact() {
 
         {/* Right Column: Contact Form */}
         <div>
-          {status === "success" ? (
-            <div
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.03)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: "24px",
-                padding: isMobile ? "2.5rem 1.5rem" : "4rem",
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: isMobile ? "350px" : "450px",
-              }}
-            >
-              {/* Checkmark Icon */}
-              <div
-                style={{
-                  width: "64px",
-                  height: "64px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255, 255, 255, 0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#ffffff",
-                  marginBottom: "2rem",
-                }}
-              >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <h4
-                style={{
-                  fontFamily: "'Big Shoulders Display', sans-serif",
-                  fontSize: "2rem",
-                  fontWeight: 700,
-                  color: "#ffffff",
-                  textTransform: "uppercase",
-                  margin: "0 0 1rem 0",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Message Sent!
-              </h4>
-              <p
-                style={{
-                  fontFamily: "'DM Sans', Arial, sans-serif",
-                  fontSize: "1rem",
-                  lineHeight: 1.5,
-                  color: "rgba(255, 255, 255, 0.6)",
-                  margin: 0,
-                  maxWidth: "340px",
-                }}
-              >
-                Thank you for reaching out. I have received your message and will get back to you shortly.
-              </p>
-            </div>
-          ) : (
-            <form
+          <form
               onSubmit={handleSubmit}
               style={{
                 display: "flex",
@@ -493,8 +433,22 @@ export default function Contact() {
                   Failed to send message. Please try again or check your credentials.
                 </p>
               )}
+
+              {status === "success" && (
+                <p
+                  style={{
+                    fontFamily: "'DM Sans', Arial, sans-serif",
+                    fontSize: "0.85rem",
+                    color: "#4ade80",
+                    textAlign: "center",
+                    marginTop: "1.5rem",
+                    margin: "1.5rem 0 0 0",
+                  }}
+                >
+                  Message sent successfully!
+                </p>
+              )}
             </form>
-          )}
         </div>
       </div>
     </section>
