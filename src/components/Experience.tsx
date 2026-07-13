@@ -103,8 +103,8 @@ const Experience = () => {
         flexDirection: "column",
         justifyContent: "center",
         backgroundColor: "#000000",
-        paddingTop: isMobile ? "4rem" : "clamp(2rem, 4vh, 4rem)",
-        paddingBottom: isMobile ? "4rem" : "clamp(2rem, 4vh, 4rem)",
+        paddingTop: isMobile ? "4rem" : "clamp(1.5rem, 3vh, 3rem)",
+        paddingBottom: isMobile ? "4rem" : "clamp(1.5rem, 3vh, 3rem)",
         overflow: "hidden",
         zIndex: 24, // Sits below ApproachSlide (25) so it doesn't overlap it during pinning
       }}
@@ -114,7 +114,7 @@ const Experience = () => {
         style={{
           paddingLeft: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)", // Restored to the left margin
           paddingRight: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)",
-          marginBottom: isMobile ? "3.5rem" : "clamp(1.5rem, 3vh, 2.5rem)",
+          marginBottom: isMobile ? "3.5rem" : "clamp(1rem, 2.5vh, 2rem)",
         }}
       >
         <span
@@ -155,6 +155,7 @@ const Experience = () => {
         style={{
           width: "100%",
           overflowX: isMobile ? "auto" : "hidden",
+          overflowY: "hidden",
           scrollSnapType: isMobile ? "x mandatory" : "none",
           scrollBehavior: isMobile ? "smooth" : "auto",
           WebkitMaskImage: isMobile
@@ -201,7 +202,7 @@ const Experience = () => {
                 style={{
                   position: "relative",
                   width: "100%",
-                  aspectRatio: "1.45 / 1", // Apple-style ratio for large, detailed presentation
+                  aspectRatio: "1.6 / 1", // Apple-style ratio for large, detailed presentation
                   borderRadius: "24px",
                   overflow: "hidden",
                   backgroundColor: "#111111",
@@ -331,7 +332,7 @@ const Experience = () => {
           gap: "0.8rem",
           justifyContent: "flex-end",
           paddingRight: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)",
-          marginTop: "3rem",
+          marginTop: isMobile ? "3rem" : "clamp(1rem, 2.5vh, 2rem)",
         }}
       >
         <button
