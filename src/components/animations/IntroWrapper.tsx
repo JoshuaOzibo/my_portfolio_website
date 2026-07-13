@@ -16,10 +16,12 @@ export default function IntroWrapper({ children }: IntroWrapperProps) {
   const [showContent, setShowContent] = useState(false);
 
   const handleIntroComplete = () => {
-    setShowIntro(false);
+    // Mount the content immediately underneath the loader
+    setShowContent(true);
+    // Delay unmounting the intro until its fade-out completes
     setTimeout(() => {
-      setShowContent(true);
-    }, 100);
+      setShowIntro(false);
+    }, 850);
   };
 
   return (
