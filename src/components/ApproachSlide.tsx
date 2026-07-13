@@ -76,7 +76,34 @@ export default function ApproachSlide() {
     // Initialize as straight lines
     updateSpokes(0);
 
-    // ── 1. Continuous Rotation + Dynamic Spoke Flex/Lag ScrollTrigger ──
+    // ── 1. Pinned Layout ScrollTrigger (Only handles Text slide transitions) ──
+    const pinTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: `+=${scrollDistance}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 1.2,
+        // Trigger the instant color swap inside onUpdate but only ONCE when crossing the boundary
+        onUpdate: (self) => {
+          const isDark = self.progress >= 0.42;
+          if (isDark !== wasDark) {
+            wasDark = isDark;
+            // Snaps colors immediately (using 0 duration or ultra-fast 0.1s so it doesn't lag/interpolate)
+            // This runs at normal speed, completely independent of the scroll rate!
+            gsap.to(container, { backgroundColor: isDark ? "#000000" : "#ffffff", duration: 0.2, overwrite: "auto" });
+            gsap.to(paths, { stroke: isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.08)", duration: 0.2, overwrite: "auto" });
+            gsap.to(texts, { fill: isDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.45)", duration: 0.2, overwrite: "auto" });
+            // Transition the top-left label color to match the theme
+            gsap.to(label, { color: isDark ? "rgba(200, 155, 60, 0.9)" : "rgba(0, 0, 0, 0.45)", duration: 0.2, overwrite: "auto" });
+          }
+        },
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // ── 2. Continuous Rotation + Dynamic Spoke Flex/Lag ScrollTrigger ──
     const rotateTrigger = ScrollTrigger.create({
       trigger: container,
       start: "top bottom",
@@ -115,32 +142,6 @@ export default function ApproachSlide() {
         });
       },
       invalidateOnRefresh: true,
-    });
-
-    // ── 2. Pinned Layout ScrollTrigger (Only handles Text slide transitions) ──
-    const pinTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: `+=${scrollDistance}`,
-        pin: true,
-        scrub: 1.2,
-        // Trigger the instant color swap inside onUpdate but only ONCE when crossing the boundary
-        onUpdate: (self) => {
-          const isDark = self.progress >= 0.42;
-          if (isDark !== wasDark) {
-            wasDark = isDark;
-            // Snaps colors immediately (using 0 duration or ultra-fast 0.1s so it doesn't lag/interpolate)
-            // This runs at normal speed, completely independent of the scroll rate!
-            gsap.to(container, { backgroundColor: isDark ? "#000000" : "#ffffff", duration: 0.2, overwrite: "auto" });
-            gsap.to(paths, { stroke: isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.08)", duration: 0.2, overwrite: "auto" });
-            gsap.to(texts, { fill: isDark ? "rgba(255, 255, 255, 0.9)" : "rgba(0, 0, 0, 0.45)", duration: 0.2, overwrite: "auto" });
-            // Transition the top-left label color to match the theme
-            gsap.to(label, { color: isDark ? "rgba(200, 155, 60, 0.9)" : "rgba(0, 0, 0, 0.45)", duration: 0.2, overwrite: "auto" });
-          }
-        },
-        invalidateOnRefresh: true,
-      },
     });
 
     pinTimeline

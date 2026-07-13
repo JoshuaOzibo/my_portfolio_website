@@ -1,10 +1,32 @@
 "use client";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { techStackIcons } from "@/lib/db";
 import Image from "next/image";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const TechIconCardExperience = () => {
+  useEffect(() => {
+    // Recalculate ScrollTrigger offsets once the components are mounted
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section id="skills" className="py-10 mb-16">
+    <section
+      id="skills"
+      style={{
+        position: "relative",
+        zIndex: 24, // Matches Experience section (24)
+        backgroundColor: "#000000",
+        paddingTop: "6rem",
+        paddingBottom: "25vh", // Ample bottom depth to allow scrolling past preceding sections fully
+      }}
+    >
       <div className="lg:mx-10 mx-6">
         <h2 className="xl:text-6xl lg:text-5xl md:text-4xl gradient-text text-3xl font-bold text-center text-white mb-12">
           Tech Stack
