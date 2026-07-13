@@ -3,9 +3,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { experienceCards } from "@/lib/db";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const Experience = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -16,9 +24,7 @@ const Experience = () => {
     window.addEventListener("resize", handleResize);
 
     const refreshScroll = () => {
-      import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
-        ScrollTrigger.refresh();
-      });
+      ScrollTrigger.refresh();
     };
 
     window.addEventListener("load", refreshScroll);
@@ -31,32 +37,74 @@ const Experience = () => {
     };
   }, []);
 
+  // GSAP ScrollTrigger for pinning and horizontal translation on desktop
+  useEffect(() => {
+    if (isMobile) return;
+
+    const ctx = gsap.context(() => {
+      const getScrollAmount = () => {
+        const track = trackRef.current;
+        if (!track) return 0;
+        return track.scrollWidth - window.innerWidth;
+      };
+
+      gsap.to(trackRef.current, {
+        x: () => -getScrollAmount(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isMobile]);
+
   const scroll = (direction: "left" | "right") => {
     const container = scrollContainerRef.current;
-    if (!container) return;
+    const track = trackRef.current;
+    if (!container || !track) return;
 
-    const card = container.querySelector("[data-card-item]");
+    const card = track.querySelector("[data-card-item]");
     if (!card) return;
 
     const cardWidth = card.getBoundingClientRect().width;
-    const gap = parseFloat(window.getComputedStyle(container).gap || "0");
+    const gap = parseFloat(window.getComputedStyle(track).gap || "0");
     const scrollAmount = cardWidth + gap;
 
-    container.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+    if (isMobile) {
+      container.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    } else {
+      window.scrollBy({
+        top: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <section
       id="experience"
+      ref={sectionRef}
       style={{
         position: "relative",
         width: "100%",
+        height: isMobile ? "auto" : "100vh",
+        display: isMobile ? "block" : "flex",
+        flexDirection: "column",
+        justifyContent: "center",
         backgroundColor: "#000000",
-        paddingTop: isMobile ? "4rem" : "6rem",
-        paddingBottom: isMobile ? "4rem" : "6rem",
+        paddingTop: isMobile ? "4rem" : "clamp(2rem, 4vh, 4rem)",
+        paddingBottom: isMobile ? "4rem" : "clamp(2rem, 4vh, 4rem)",
         overflow: "hidden",
         zIndex: 24, // Sits below ApproachSlide (25) so it doesn't overlap it during pinning
       }}
@@ -66,7 +114,7 @@ const Experience = () => {
         style={{
           paddingLeft: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)", // Restored to the left margin
           paddingRight: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)",
-          marginBottom: "3.5rem",
+          marginBottom: isMobile ? "3.5rem" : "clamp(1.5rem, 3vh, 2.5rem)",
         }}
       >
         <span
@@ -105,11 +153,10 @@ const Experience = () => {
       <div
         ref={scrollContainerRef}
         style={{
-          display: "flex",
-          gap: "2.5rem",
-          overflowX: "auto",
-          scrollSnapType: "x mandatory",
-          scrollBehavior: "smooth",
+          width: "100%",
+          overflowX: isMobile ? "auto" : "hidden",
+          scrollSnapType: isMobile ? "x mandatory" : "none",
+          scrollBehavior: isMobile ? "smooth" : "auto",
           WebkitMaskImage: isMobile
             ? "linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent)"
             : "linear-gradient(to right, black 80%, transparent)",
@@ -119,151 +166,162 @@ const Experience = () => {
         }}
         className="no-scrollbar"
       >
-        {/* Spacer element at the start to push content to the right initially */}
         <div
+          ref={trackRef}
           style={{
-            flex: "0 0 auto",
-            width: isMobile ? "1.5rem" : "50vw",
-            scrollSnapAlign: "start",
+            display: "flex",
+            gap: "2.5rem",
+            width: isMobile ? "auto" : "max-content",
           }}
-        />
-
-        {experienceCards.map((card, index) => (
+        >
+          {/* Spacer element at the start to push content to the right initially */}
           <div
-            key={index}
-            data-card-item
             style={{
               flex: "0 0 auto",
-              // Apple-style: Larger images on desktop, standard responsive flow on mobile
-              width: isMobile ? "82vw" : "680px",
-              scrollSnapAlign: "start",
-              display: "flex",
-              flexDirection: "column",
+              width: isMobile ? "1.5rem" : "50vw",
+              scrollSnapAlign: isMobile ? "start" : "none",
             }}
-          >
-            {/* ── Card Image Wrapper ── */}
+          />
+
+          {experienceCards.map((card, index) => (
             <div
+              key={index}
+              data-card-item
               style={{
-                position: "relative",
-                width: "100%",
-                aspectRatio: "1.45 / 1", // Apple-style ratio for large, detailed presentation
-                borderRadius: "24px",
-                overflow: "hidden",
-                backgroundColor: "#111111",
+                flex: "0 0 auto",
+                // Apple-style: Larger images on desktop, standard responsive flow on mobile
+                width: isMobile ? "82vw" : "clamp(500px, 45vw, 680px)",
+                scrollSnapAlign: isMobile ? "start" : "none",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
-              <Image
-                src={card.imgPath}
-                alt={card.workedOn}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  borderRadius: "24px",
-                }}
-              />
+              {/* ── Card Image Wrapper ── */}
               <div
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%)",
-                  pointerEvents: "none",
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "1.45 / 1", // Apple-style ratio for large, detailed presentation
+                  borderRadius: "24px",
+                  overflow: "hidden",
+                  backgroundColor: "#111111",
                 }}
-              />
-
-              {card.liveLink && (
-                <a
-                  href={card.liveLink}
-                  target="_blank"
-                  rel="noreferrer"
+              >
+                <Image
+                  src={card.imgPath}
+                  alt={card.workedOn}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    borderRadius: "24px",
+                  }}
+                />
+                <div
                   style={{
                     position: "absolute",
-                    bottom: "1.5rem",
-                    right: "1.5rem",
-                    backgroundColor: "rgba(0, 0, 0, 0.65)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    borderRadius: "50%",
-                    width: "48px",
-                    height: "48px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#ffffff",
-                    transition: "transform 0.2s, background-color 0.2s",
-                    zIndex: 10,
+                    inset: 0,
+                    background: "linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%)",
+                    pointerEvents: "none",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.08)";
-                    e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.85)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                    e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.65)";
+                />
+
+                {card.liveLink && (
+                  <a
+                    href={card.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      position: "absolute",
+                      bottom: "1.5rem",
+                      right: "1.5rem",
+                      backgroundColor: "rgba(0, 0, 0, 0.65)",
+                      backdropFilter: "blur(12px)",
+                      WebkitBackdropFilter: "blur(12px)",
+                      borderRadius: "50%",
+                      width: "48px",
+                      height: "48px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#ffffff",
+                      transition: "transform 0.2s, background-color 0.2s",
+                      zIndex: 10,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "scale(1.08)";
+                      e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.85)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.65)";
+                    }}
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+
+              {/* ── Card Content ── */}
+              <div
+                style={{
+                  marginTop: "1.5rem",
+                  paddingRight: "1rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'DM Sans', Arial, sans-serif",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.55,
+                    color: "rgba(255, 255, 255, 0.65)",
+                    margin: 0,
                   }}
                 >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </a>
-              )}
+                  <strong style={{ color: "#ffffff", fontWeight: 600 }}>
+                    {card.workedOn}
+                  </strong>{" "}
+                  — {card.responsibilities.join(" ")}
+                </p>
+
+                <span
+                  style={{
+                    display: "block",
+                    marginTop: "0.6rem",
+                    fontFamily: "'DM Sans', Arial, sans-serif",
+                    fontSize: "0.8rem",
+                    color: "rgba(255, 255, 255, 0.4)",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {card.title} &nbsp;·&nbsp; {card.date}
+                </span>
+              </div>
             </div>
+          ))}
 
-            {/* ── Card Content ── */}
-            <div
-              style={{
-                marginTop: "1.5rem",
-                paddingRight: "1rem",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'DM Sans', Arial, sans-serif",
-                  fontSize: "1.05rem",
-                  lineHeight: 1.55,
-                  color: "rgba(255, 255, 255, 0.65)",
-                  margin: 0,
-                }}
-              >
-                <strong style={{ color: "#ffffff", fontWeight: 600 }}>
-                  {card.workedOn}
-                </strong>{" "}
-                — {card.responsibilities.join(" ")}
-              </p>
-
-              <span
-                style={{
-                  display: "block",
-                  marginTop: "0.6rem",
-                  fontFamily: "'DM Sans', Arial, sans-serif",
-                  fontSize: "0.8rem",
-                  color: "rgba(255, 255, 255, 0.4)",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                {card.title} &nbsp;·&nbsp; {card.date}
-              </span>
-            </div>
-          </div>
-        ))}
-
-        {/* Spacer element at the end for balanced scrolling space */}
-        <div
-          style={{
-            flex: "0 0 auto",
-            width: isMobile ? "1.5rem" : "50vw",
-          }}
-        />
+          {/* Spacer element at the end for balanced scrolling space */}
+          <div
+            style={{
+              flex: "0 0 auto",
+              width: isMobile
+                ? "1.5rem"
+                : "calc(100vw - clamp(2rem, 5vw, 6rem) - clamp(500px, 45vw, 680px))",
+            }}
+          />
+        </div>
       </div>
 
       {/* ── Navigation Arrows (At the Bottom Right) ── */}
