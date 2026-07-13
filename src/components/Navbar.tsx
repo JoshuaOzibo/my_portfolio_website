@@ -66,9 +66,9 @@ const Navbar = () => {
         { opacity: 1, y: 0, duration: 0.4, ease: "expo.out", delay: 0.5 }
       );
     } else {
-      // Hide overlay
-      gsap.to(overlayRef.current, {
-        opacity: 0, duration: 0.35, ease: "power2.in",
+      // Stagger items out in reverse, fade out socials, then hide the overlay
+      const items = menuItemsRef.current.filter(Boolean);
+      const tl = gsap.timeline({
         onComplete: () => {
           if (overlayRef.current) {
             overlayRef.current.style.display = "none";
@@ -76,6 +76,33 @@ const Navbar = () => {
           }
         },
       });
+
+      tl.to(socialsRef.current, {
+        opacity: 0,
+        y: 15,
+        duration: 0.2,
+        ease: "power2.in",
+      })
+      .to(
+        items,
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.3,
+          stagger: -0.04, // Stagger in reverse order (bottom to top)
+          ease: "power2.in",
+        },
+        "<+0.05"
+      )
+      .to(
+        overlayRef.current,
+        {
+          opacity: 0,
+          duration: 0.35,
+          ease: "power2.inOut",
+        },
+        "+=0.08" // Wait slightly after all links are fully gone
+      );
     }
   }, [menuOpen]);
 
