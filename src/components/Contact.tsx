@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Socials } from "@/lib/db";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(false);
@@ -38,15 +39,44 @@ export default function Contact() {
     }
 
     setStatus("sending");
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      
-      // Revert status to idle after 4 seconds
-      setTimeout(() => {
-        setStatus("idle");
-      }, 4000);
-    }, 1500);
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS: One or more environment variables are missing! If you just created or edited the .env.local file, you must restart your Next.js development server (npm run dev) for changes to take effect.");
+    }
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject || "No Subject Provided",
+      message: formData.message,
+      to_email: "joshuamichaelchinedu@gmail.com",
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          setStatus("success");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          
+          setTimeout(() => {
+            setStatus("idle");
+          }, 5000);
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          setStatus("error");
+          
+          setTimeout(() => {
+            setStatus("idle");
+          }, 6000);
+        }
+      );
   };
 
   return (
@@ -448,6 +478,21 @@ export default function Contact() {
                   </>
                 )}
               </button>
+
+              {status === "error" && (
+                <p
+                  style={{
+                    fontFamily: "'DM Sans', Arial, sans-serif",
+                    fontSize: "0.85rem",
+                    color: "#ff4d4d",
+                    textAlign: "center",
+                    marginTop: "1.5rem",
+                    margin: "1.5rem 0 0 0",
+                  }}
+                >
+                  Failed to send message. Please try again or check your credentials.
+                </p>
+              )}
             </form>
           )}
         </div>
