@@ -56,177 +56,52 @@ const Experience = () => {
         width: "100%",
         backgroundColor: "#000000",
         paddingTop: isMobile ? "4rem" : "6rem",
-        paddingBottom: isMobile ? "4rem" : "8rem",
+        paddingBottom: isMobile ? "4rem" : "6rem",
         overflow: "hidden",
         zIndex: 24, // Sits below ApproachSlide (25) so it doesn't overlap it during pinning
       }}
     >
-      {/* ── Desktop Layout: Left Column Title Cover ── */}
-      {!isMobile && (
-        <div
+      {/* ── Section Title (At the Top) ── */}
+      <div
+        style={{
+          paddingLeft: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)", // Restored to the left margin
+          paddingRight: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)",
+          marginBottom: "3.5rem",
+        }}
+      >
+        <span
           style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: "38vw",
-            background: "linear-gradient(to right, #000000 82%, rgba(0,0,0,0.8) 90%, transparent 100%)",
-            zIndex: 20,
-            paddingLeft: "clamp(2rem, 5vw, 6rem)",
-            paddingTop: "6.5rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            pointerEvents: "none",
+            fontFamily: "'DM Sans', Arial, sans-serif",
+            fontSize: "0.68rem",
+            fontWeight: 500,
+            color: "rgba(255, 255, 255, 0.4)",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            display: "block",
+            marginBottom: "0.5rem",
           }}
         >
-          <div style={{ pointerEvents: "auto" }}>
-            <span
-              style={{
-                fontFamily: "'DM Sans', Arial, sans-serif",
-                fontSize: "0.68rem",
-                fontWeight: 500,
-                color: "rgba(255, 255, 255, 0.4)",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                display: "block",
-                marginBottom: "0.5rem",
-              }}
-            >
-              (My Journey)
-            </span>
-            <h2
-              style={{
-                fontFamily: "'Big Shoulders Display', sans-serif",
-                fontSize: "clamp(2.5rem, 5vw, 5.5rem)",
-                fontWeight: 800,
-                lineHeight: 0.95,
-                color: "#ffffff",
-                textTransform: "uppercase",
-                margin: 0,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Professional
-              <br />
-              Experience
-            </h2>
-
-            {/* Left Column Navigation Arrows */}
-            <div
-              style={{
-                display: "flex",
-                gap: "0.8rem",
-                marginTop: "3rem",
-              }}
-            >
-              <button
-                onClick={() => scroll("left")}
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
-                  border: "none",
-                  color: "#ffffff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  transition: "background-color 0.2s, transform 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
-                  e.currentTarget.style.transform = "scale(1.05)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-                aria-label="Previous Slide"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-
-              <button
-                onClick={() => scroll("right")}
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
-                  border: "none",
-                  color: "#ffffff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  transition: "background-color 0.2s, transform 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
-                  e.currentTarget.style.transform = "scale(1.05)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-                aria-label="Next Slide"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── Mobile Layout Title ── */}
-      {isMobile && (
-        <div
+          (My Journey)
+        </span>
+        <h2
           style={{
-            paddingLeft: "1.5rem",
-            paddingRight: "1.5rem",
-            marginBottom: "2.5rem",
+            fontFamily: "'Big Shoulders Display', sans-serif",
+            fontSize: "clamp(2.5rem, 5vw, 5.5rem)",
+            fontWeight: 800,
+            lineHeight: 0.95,
+            color: "#ffffff",
+            textTransform: "uppercase",
+            margin: 0,
+            letterSpacing: "-0.02em",
           }}
         >
-          <span
-            style={{
-              fontFamily: "'DM Sans', Arial, sans-serif",
-              fontSize: "0.68rem",
-              fontWeight: 500,
-              color: "rgba(255, 255, 255, 0.4)",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              display: "block",
-              marginBottom: "0.5rem",
-            }}
-          >
-            (My Journey)
-          </span>
-          <h2
-            style={{
-              fontFamily: "'Big Shoulders Display', sans-serif",
-              fontSize: "2.5rem",
-              fontWeight: 800,
-              lineHeight: 0.95,
-              color: "#ffffff",
-              textTransform: "uppercase",
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Professional
-            <br />
-            Experience
-          </h2>
-        </div>
-      )}
+          Professional
+          <br />
+          Experience
+        </h2>
+      </div>
 
-      {/* ── Horizontal Scrollable Carousel Container ── */}
+      {/* ── Horizontal Scrollable Carousel Container (Starts at center on desktop) ── */}
       <div
         ref={scrollContainerRef}
         style={{
@@ -235,27 +110,33 @@ const Experience = () => {
           overflowX: "auto",
           scrollSnapType: "x mandatory",
           scrollBehavior: "smooth",
-          // Desktop shifts first card to start at 38vw from left, Mobile starts normal at 1.5rem
-          paddingLeft: isMobile ? "1.5rem" : "38vw",
-          paddingRight: isMobile ? "1.5rem" : "10vw",
           WebkitMaskImage: isMobile
-            ? "linear-gradient(to right, transparent, black 4%, black 96%, transparent)"
-            : "linear-gradient(to right, transparent, black 38vw, black 94%, transparent)",
+            ? "linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent)"
+            : "linear-gradient(to right, black 80%, transparent)",
           maskImage: isMobile
-            ? "linear-gradient(to right, transparent, black 4%, black 96%, transparent)"
-            : "linear-gradient(to right, transparent, black 38vw, black 94%, transparent)",
+            ? "linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent)"
+            : "linear-gradient(to right, black 80%, transparent)",
         }}
         className="no-scrollbar"
       >
+        {/* Spacer element at the start to push content to the right initially */}
+        <div
+          style={{
+            flex: "0 0 auto",
+            width: isMobile ? "1.5rem" : "50vw",
+            scrollSnapAlign: "start",
+          }}
+        />
+
         {experienceCards.map((card, index) => (
           <div
             key={index}
             data-card-item
             style={{
               flex: "0 0 auto",
-              // On desktop: fixed width card. On mobile: scales to fill most of screen width.
-              width: isMobile ? "82vw" : "550px",
-              scrollSnapAlign: isMobile ? "center" : "start",
+              // Apple-style: Larger images on desktop, standard responsive flow on mobile
+              width: isMobile ? "82vw" : "680px",
+              scrollSnapAlign: "start",
               display: "flex",
               flexDirection: "column",
             }}
@@ -265,7 +146,7 @@ const Experience = () => {
               style={{
                 position: "relative",
                 width: "100%",
-                aspectRatio: "1.65 / 1",
+                aspectRatio: "1.45 / 1", // Apple-style ratio for large, detailed presentation
                 borderRadius: "24px",
                 overflow: "hidden",
                 backgroundColor: "#111111",
@@ -279,6 +160,7 @@ const Experience = () => {
                 style={{
                   objectFit: "cover",
                   objectPosition: "center",
+                  borderRadius: "24px",
                 }}
               />
               <div
@@ -297,14 +179,14 @@ const Experience = () => {
                   rel="noreferrer"
                   style={{
                     position: "absolute",
-                    bottom: "1.25rem",
-                    right: "1.25rem",
+                    bottom: "1.5rem",
+                    right: "1.5rem",
                     backgroundColor: "rgba(0, 0, 0, 0.65)",
                     backdropFilter: "blur(12px)",
                     WebkitBackdropFilter: "blur(12px)",
                     borderRadius: "50%",
-                    width: "44px",
-                    height: "44px",
+                    width: "48px",
+                    height: "48px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -322,8 +204,8 @@ const Experience = () => {
                   }}
                 >
                   <svg
-                    width="16"
-                    height="16"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -340,15 +222,15 @@ const Experience = () => {
             {/* ── Card Content ── */}
             <div
               style={{
-                marginTop: "1.25rem",
+                marginTop: "1.5rem",
                 paddingRight: "1rem",
               }}
             >
               <p
                 style={{
                   fontFamily: "'DM Sans', Arial, sans-serif",
-                  fontSize: "0.95rem",
-                  lineHeight: 1.5,
+                  fontSize: "1.05rem",
+                  lineHeight: 1.55,
                   color: "rgba(255, 255, 255, 0.65)",
                   margin: 0,
                 }}
@@ -362,9 +244,9 @@ const Experience = () => {
               <span
                 style={{
                   display: "block",
-                  marginTop: "0.5rem",
+                  marginTop: "0.6rem",
                   fontFamily: "'DM Sans', Arial, sans-serif",
-                  fontSize: "0.75rem",
+                  fontSize: "0.8rem",
                   color: "rgba(255, 255, 255, 0.4)",
                   letterSpacing: "0.05em",
                 }}
@@ -374,61 +256,86 @@ const Experience = () => {
             </div>
           </div>
         ))}
-      </div>
 
-      {/* ── Mobile Layout Navigation Arrows ── */}
-      {isMobile && (
+        {/* Spacer element at the end for balanced scrolling space */}
         <div
           style={{
-            display: "flex",
-            gap: "0.8rem",
-            justifyContent: "center",
-            marginTop: "2rem",
+            flex: "0 0 auto",
+            width: isMobile ? "1.5rem" : "50vw",
           }}
-        >
-          <button
-            onClick={() => scroll("left")}
-            style={{
-              width: "44px",
-              height: "44px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(255, 255, 255, 0.08)",
-              border: "none",
-              color: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-            }}
-            aria-label="Previous Slide"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
+        />
+      </div>
 
-          <button
-            onClick={() => scroll("right")}
-            style={{
-              width: "44px",
-              height: "44px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(255, 255, 255, 0.08)",
-              border: "none",
-              color: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-            }}
-            aria-label="Next Slide"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-      )}
+      {/* ── Navigation Arrows (At the Bottom Right) ── */}
+      <div
+        style={{
+          display: "flex",
+          gap: "0.8rem",
+          justifyContent: "flex-end",
+          paddingRight: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)",
+          marginTop: "3rem",
+        }}
+      >
+        <button
+          onClick={() => scroll("left")}
+          style={{
+            width: "48px",
+            height: "48px",
+            borderRadius: "50%",
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            border: "none",
+            color: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            transition: "background-color 0.2s, transform 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+          aria-label="Previous Slide"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+
+        <button
+          onClick={() => scroll("right")}
+          style={{
+            width: "48px",
+            height: "48px",
+            borderRadius: "50%",
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            border: "none",
+            color: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            transition: "background-color 0.2s, transform 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+          aria-label="Next Slide"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
 
       {/* Hide Scrollbars Global Inline CSS Utility */}
       <style jsx global>{`
