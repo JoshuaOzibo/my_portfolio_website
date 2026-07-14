@@ -47,7 +47,7 @@ const Experience = () => {
         return track.scrollWidth - window.innerWidth;
       };
 
-      gsap.to(trackRef.current, {
+      const horiz = gsap.to(trackRef.current, {
         x: () => -getScrollAmount(),
         ease: "none",
         scrollTrigger: {
@@ -59,6 +59,51 @@ const Experience = () => {
           scrub: 1,
           invalidateOnRefresh: true,
         },
+      });
+
+      // Scale each experience card as it scrolls through the viewport center
+      const cards = gsap.utils.toArray(".experience-card");
+      cards.forEach((card: any) => {
+        // Scale up as it approaches center
+        gsap.fromTo(
+          card,
+          {
+            scale: 0.92,
+            borderColor: "rgba(255, 255, 255, 0.04)",
+            backgroundColor: "rgba(255, 255, 255, 0.01)",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+          },
+          {
+            scale: 1.04,
+            borderColor: "rgba(255, 255, 255, 0.15)",
+            backgroundColor: "rgba(255, 255, 255, 0.04)",
+            boxShadow: "0 12px 40px rgba(255, 255, 255, 0.06)",
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: card,
+              containerAnimation: horiz,
+              start: "left 90%",
+              end: "center 50%",
+              scrub: true,
+            },
+          }
+        );
+
+        // Scale down as it leaves center
+        gsap.to(card, {
+          scale: 0.92,
+          borderColor: "rgba(255, 255, 255, 0.04)",
+          backgroundColor: "rgba(255, 255, 255, 0.01)",
+          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+          ease: "power1.in",
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: horiz,
+            start: "center 50%",
+            end: "right 10%",
+            scrub: true,
+          },
+        });
       });
     }, sectionRef);
 
@@ -105,7 +150,7 @@ const Experience = () => {
         style={{
           paddingLeft: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)", // Restored to the left margin
           paddingRight: isMobile ? "1.5rem" : "clamp(2rem, 5vw, 6rem)",
-          marginBottom: isMobile ? "3.5rem" : "clamp(1rem, 2.5vh, 2rem)",
+          marginBottom: isMobile ? "1.8rem" : "clamp(1rem, 2.5vh, 2rem)",
         }}
       >
         <span
@@ -178,6 +223,7 @@ const Experience = () => {
           {experienceCards.map((card, index) => (
             <div
               key={index}
+              className="experience-card"
               data-card-item
               style={{
                 flex: "0 0 auto",
@@ -186,6 +232,13 @@ const Experience = () => {
                 scrollSnapAlign: isMobile ? "start" : "none",
                 display: "flex",
                 flexDirection: "column",
+                padding: "1.25rem",
+                borderRadius: "32px",
+                border: "1px solid rgba(255, 255, 255, 0.04)",
+                backgroundColor: "rgba(255, 255, 255, 0.01)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
               }}
             >
               {/* ── Card Image Wrapper ── */}
@@ -194,7 +247,7 @@ const Experience = () => {
                 style={{
                   position: "relative",
                   width: "100%",
-                  aspectRatio: "1.6 / 1", // Apple-style ratio for large, detailed presentation
+                  aspectRatio: isMobile ? "2.0 / 1" : "1.6 / 1",
                   borderRadius: "24px",
                   overflow: "hidden",
                   backgroundColor: "#111111",
