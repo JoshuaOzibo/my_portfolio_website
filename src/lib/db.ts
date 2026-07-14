@@ -9,6 +9,7 @@ import SwiftcareerPreview from "@/assets/swiftcareerPreviewImage.webp";
 import MentlyImage from "@/assets/MentlyImage.png";
 import chromeExtensionImage from "@/assets/extention images_Stay Organized – Track all your job applications, interviews, and follow-ups in one place.(purple).webp";
 import BorookPreviewImage from "@/assets/BorookUi.png";
+import CharlesMailingImage from "@/assets/charles_mailing_image.png";
 
 // skills Svgicons 
 import NextJsImage from "@/assets/Skills/next-js.svg";
@@ -227,6 +228,17 @@ export const project = [
 ];
 
 export const experienceCards = [
+  {
+    imgPath: CharlesMailingImage,
+    workedOn: "SMS Verification & Virtual Number Rental Platform",
+    title: "Full Stack Development",
+    date: "February 2026 - July",
+    responsibilities: [
+      "Built with React, TypeScript, Node.js, and Firebase for real-time full-stack scalability.",
+      "Allows users to purchase temporary or long-term virtual phone numbers for OTP verification (WhatsApp, Telegram, etc.) across multiple servers.",
+      "Integrated a dynamic routing engine cascading queries across multiple SMS APIs (SMSPool, 5Sim, TextVerified) with a transactional wallet system that only deducts funds upon successful OTP receipt.",
+    ],
+  },
   {
     imgPath: PostGeneratorPreview,
     workedOn: "AI-Powered Content Creation App",

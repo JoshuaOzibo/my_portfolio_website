@@ -204,7 +204,7 @@ const Experience = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   style={{
-                    objectFit: "cover",
+                    objectFit: "contain",
                     objectPosition: "center",
                     borderRadius: "24px",
                   }}

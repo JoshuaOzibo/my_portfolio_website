@@ -25,7 +25,7 @@ export default function Projects() {
                 src={project[0].image}
                 alt={project[0].text}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute inset-0 flex items-end p-6 md:p-8 lg:p-10">

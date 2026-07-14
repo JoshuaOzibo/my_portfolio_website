@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -49,6 +49,14 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const scrollRef   = useRef<HTMLDivElement>(null);
   const marqueeRef  = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useGSAP(
     () => {
@@ -242,16 +250,14 @@ export default function Hero() {
             position: "absolute",
             bottom: "3.5rem",        // sits just above the scroll indicator
             left: 0,
-            width: "35%",            // only occupies left portion — never reaches center
+            width: isMobile ? "60%" : "22%",
             zIndex: 20,
             opacity: 0,
             overflow: "hidden",
-            // Fade left edge in, fade right edge out so it doesn't crash into center
             maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 80%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 80%, transparent 100%)",
           }}
         >
-          {/* Label */}
           <p style={{
             fontFamily: "'DM Sans', Arial, sans-serif",
             fontSize: "0.55rem",
@@ -266,7 +272,6 @@ export default function Hero() {
             I BUILD WITH
           </p>
 
-          {/* Scrolling track — items duplicated for seamless loop */}
           <div style={{ display: "flex", width: "max-content" }} className="marquee-track">
             {[...SKILLS, ...SKILLS].map((skill, i) => {
               const Icon = skill.icon;
