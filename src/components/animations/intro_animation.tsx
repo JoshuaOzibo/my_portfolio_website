@@ -1,132 +1,187 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(useGSAP);
 
 interface IntroAnimationProps {
   onComplete: () => void;
 }
 
+// Global flag to track if preloader has completed in this session
+let hasPlayedCompleted = false;
+
 const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
   const container = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-  const dotsRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const dots = Array.from({ length: 60 }, (_, i) => ({
+  useEffect(() => {
+    // If already played, immediately skip
+    if (hasPlayedCompleted) {
+      setIsVisible(false);
+      onComplete();
+      return;
+    }
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Start requestAnimationFrame count-up (smooth 2000ms count duration so it stays longer)
+    let start: number | null = null;
+    const duration = 2000; 
+    let animationFrameId: number;
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const val = Math.min(Math.floor((elapsed / duration) * 100), 100);
+      
+      setProgress(val);
+
+      if (val < 100) {
+        animationFrameId = requestAnimationFrame(step);
+      } else {
+        // 1. Instantly trigger mounting of content underneath the fully visible loader
+        onComplete();
+
+        // 2. Sequential WELCOME letters fly-up exit
+        gsap.to('.welcome-letter', {
+          y: '-150%',
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.04, 
+          ease: 'power3.in',
+        });
+
+        // 3. Fade out loader panel overlay
+        if (container.current) {
+          gsap.to(container.current, {
+            opacity: 0,
+            duration: 0.7,
+            delay: 0.1,
+            ease: 'power2.inOut',
+            onComplete: () => {
+              hasPlayedCompleted = true;
+              setIsVisible(false);
+            },
+          });
+        } else {
+          hasPlayedCompleted = true;
+          setIsVisible(false);
+        }
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [onComplete]);
+
+  const dots = Array.from({ length: 45 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1.5,
-    delay: Math.random() * 0.5,
+    size: Math.random() * 2 + 1,
   }));
 
-  useGSAP(() => {
-    if (!container.current) return;
-
-    const tl = gsap.timeline();
-
-    tl.set([nameRef.current, titleRef.current, ringRef.current], { opacity: 0 })
-      .set(nameRef.current, { y: 30 })
-      .set(titleRef.current, { y: 20 })
-      .set(ringRef.current, { scale: 0.8 })
-      .set('.dot', { opacity: 0, scale: 0 })
-      .to('.dot', {
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.015,
-        ease: 'power2.out',
-      })
-      .to(nameRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-      }, '-=0.4')
-      .to(titleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-      }, '-=0.8')
-      .to(ringRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 1.5,
-        ease: 'elastic.out(1, 0.4)',
-      }, '-=1')
-      .to(ringRef.current, {
-        boxShadow: '0 0 80px hsl(175 70% 40% / 0.7), 0 0 120px hsl(175 70% 40% / 0.5)',
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut',
-      }, '-=0.3')
-      .to(container.current, {
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.in',
-        onComplete: () => {
-          setIsVisible(false);
-          onComplete();
-        },
-      }, '+=1.5');
-  }, { scope: container });
-
-  if (!isVisible) return null;
+  if (!isVisible || hasPlayedCompleted) return null;
 
   return (
     <div
       ref={container}
-      className="fixed inset-0 z-[9999] bg-background flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[9999] bg-[#0e0e0e] flex items-center justify-center overflow-hidden"
+      style={{ background: '#0e0e0e' }}
     >
-      <div ref={dotsRef} className="absolute inset-0">
+      {/* Background Subtle Particles */}
+      <div className="absolute inset-0 pointer-events-none">
         {dots.map((dot) => (
           <div
             key={dot.id}
-            className="dot absolute rounded-full bg-primary"
+            className="intro-dot absolute rounded-full bg-white/10"
             style={{
               left: `${dot.x}%`,
               top: `${dot.y}%`,
               width: `${dot.size}px`,
               height: `${dot.size}px`,
-              boxShadow: `0 0 ${dot.size * 2}px hsl(175 70% 40% / 0.6)`,
+              opacity: 0.3,
+              boxShadow: `0 0 ${dot.size * 3}px rgba(255, 255, 255, 0.2)`,
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center">
-        <div
-          ref={ringRef}
-          className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[500px] lg:h-[500px] rounded-full border-1 border-primary opacity-0"
-          style={{
-            boxShadow: '0 0 40px hsl(175 70% 40% / 0.3)',
-          }}
-        />
+      {/* Centered Straight WELCOME Text (Styled like "Joshua" on hero screen) */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 20,
+          display: 'flex',
+          gap: isMobile ? '0.1rem' : '0.2rem',
+          userSelect: 'none',
+        }}
+      >
+        {"WELCOME".split("").map((char, idx) => (
+          <span
+            key={idx}
+            className="welcome-letter"
+            style={{
+              display: 'inline-block',
+              fontFamily: "'Big Shoulders Display', sans-serif",
+              fontWeight: 800,
+              fontSize: 'clamp(4rem, 13vw, 11rem)',
+              letterSpacing: '-0.02em',
+              textTransform: 'uppercase',
+              color: '#ffffff',
+              lineHeight: 0.88,
+            }}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))}
+      </div>
 
-        <div className="relative z-20 text-center">
-          <h1
-            ref={nameRef}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground uppercase tracking-tight mb-4 opacity-0"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
-            JOSHUA
-          </h1>
-          <p
-            ref={titleRef}
-            className="text-lg md:text-xl lg:text-2xl text-foreground/90 font-light opacity-0"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
-            Frontend Developer
-          </p>
-        </div>
+      {/* Bottom Right Percentage Counter */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: isMobile ? '2.5rem' : '4.5rem',
+          right: isMobile ? '2.5rem' : '5rem',
+          zIndex: 20,
+          display: 'flex',
+          alignItems: 'baseline',
+          userSelect: 'none',
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Big Shoulders Display', sans-serif",
+            fontWeight: 800,
+            fontSize: 'clamp(2.5rem, 5.5vw, 6rem)',
+            color: '#ffffff',
+            lineHeight: 0.9,
+            marginRight: '0.1rem',
+          }}
+        >
+          %
+        </span>
+        <span
+          style={{
+            fontFamily: "'Big Shoulders Display', sans-serif",
+            fontWeight: 800,
+            fontSize: 'clamp(2.5rem, 5.5vw, 6rem)',
+            color: '#ffffff',
+            lineHeight: 0.9,
+          }}
+        >
+          {progress}
+        </span>
       </div>
     </div>
   );

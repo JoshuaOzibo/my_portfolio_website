@@ -1,18 +1,17 @@
 import Hero from '@/components/Hero'
-import Projects from '@/components/Projects'
-import Skill from '@/components/Skill'
+import AboutSlide from '@/components/AboutSlide'
+import ApproachSlide from '@/components/ApproachSlide'
 import Experience from '@/components/Experience'
-import OverView from '@/components/OverView'
+import Contact from '@/components/Contact'
 
 export default function Home() {
   return (
     <main className=''>
       <Hero />
-      <OverView />
-      <Projects />
+      <AboutSlide />
+      <ApproachSlide />
       <Experience />
-      <Skill />
-       {/* <Contact /> */}
+      <Contact />
     </main>
   )
-} 
+}

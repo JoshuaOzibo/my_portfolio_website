@@ -136,8 +136,8 @@ html {
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Outfit', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', 'Outfit', sans-serif;
   }
 } 
 
@@ -149,10 +149,10 @@ html,
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: black;
+  background-color: #000000;
   color: white;
   scroll-behavior: smooth;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'DM Sans', 'Outfit', sans-serif;
 }
 
 section {
@@ -160,7 +160,8 @@ section {
 }
 
 @theme {
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: 'DM Sans', 'Outfit', sans-serif;
+  --font-display: 'Clash Display', 'Space Grotesk', sans-serif;
   --color-white-50: #d9ecff;
   --color-black-50: #1c1c21;
   --color-black-100: #0e0e10;
@@ -427,5 +428,15 @@ section {
   mask-clip: padding-box, border-box;
   opacity: 0;
   transition: 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
