@@ -37,10 +37,8 @@ const Experience = () => {
     };
   }, []);
 
-  // GSAP ScrollTrigger for pinning and horizontal translation on desktop
+  // GSAP ScrollTrigger for pinning and horizontal translation
   useEffect(() => {
-    if (isMobile) return;
-
     const ctx = gsap.context(() => {
       const getScrollAmount = () => {
         const track = trackRef.current;
@@ -64,12 +62,11 @@ const Experience = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [isMobile]);
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
-    const container = scrollContainerRef.current;
     const track = trackRef.current;
-    if (!container || !track) return;
+    if (!track) return;
 
     const card = track.querySelector("[data-card-item]");
     if (!card) return;
@@ -78,17 +75,10 @@ const Experience = () => {
     const gap = parseFloat(window.getComputedStyle(track).gap || "0");
     const scrollAmount = cardWidth + gap;
 
-    if (isMobile) {
-      container.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    } else {
-      window.scrollBy({
-        top: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
+    window.scrollBy({
+      top: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -98,13 +88,13 @@ const Experience = () => {
       style={{
         position: "relative",
         width: "100%",
-        height: isMobile ? "auto" : "100vh",
-        display: isMobile ? "block" : "flex",
+        height: "100vh",
+        display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         backgroundColor: "#000000",
-        paddingTop: isMobile ? "4rem" : "clamp(1.5rem, 3vh, 3rem)",
-        paddingBottom: isMobile ? "4rem" : "clamp(1.5rem, 3vh, 3rem)",
+        paddingTop: "clamp(1.5rem, 3vh, 3rem)",
+        paddingBottom: "clamp(1.5rem, 3vh, 3rem)",
         overflow: "hidden",
         zIndex: 24, // Sits below ApproachSlide (25) so it doesn't overlap it during pinning
       }}
@@ -154,10 +144,10 @@ const Experience = () => {
         ref={scrollContainerRef}
         style={{
           width: "100%",
-          overflowX: isMobile ? "auto" : "hidden",
+          overflowX: "hidden",
           overflowY: "hidden",
-          scrollSnapType: isMobile ? "x mandatory" : "none",
-          scrollBehavior: isMobile ? "smooth" : "auto",
+          scrollSnapType: "none",
+          scrollBehavior: "auto",
           WebkitMaskImage: isMobile
             ? "linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent)"
             : "linear-gradient(to right, black 80%, transparent)",

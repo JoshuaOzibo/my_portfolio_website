@@ -32,8 +32,8 @@ export default function AboutSlide() {
       onUpdate(self) {
         const progress = self.progress * wordEls.length;
         wordEls.forEach((el, i) => {
-          // smooth ramp per word: 0.12 → 1.0
-          const alpha = Math.min(Math.max((progress - i) * 0.9, 0.12), 1);
+          // smooth ramp per word: 0.3 → 1.0
+          const alpha = Math.min(Math.max((progress - i) * 0.9, 0.3), 1);
           el.style.color = `rgba(255,255,255,${alpha})`;
         });
       },
@@ -48,18 +48,23 @@ export default function AboutSlide() {
       style={{
         position: "relative",
         zIndex: 20,            // layers on top of the pinned hero (z-index:10)
-        width: "100%",
-        height: "100vh",
+        width: "100vw",
+        maxWidth: "100vw",
+        height: "100dvh",
         background: "#000",
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        boxSizing: "border-box",
       }}
     >
       <div
         style={{
           maxWidth: "860px",
-          padding: "0 clamp(2rem, 8vw, 6rem)",
+          padding: "0 clamp(1.25rem, 6vw, 4rem)",
           width: "100%",
+          boxSizing: "border-box",
         }}
       >
         {/* (About) label */}
@@ -70,8 +75,8 @@ export default function AboutSlide() {
           color: "rgba(200,155,60,0.9)",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          marginBottom: "2.2rem",
-          margin: "0 0 2.2rem 0",
+          marginBottom: "1.5rem",
+          margin: "0 0 1.5rem 0",
         }}>
           (About)
         </p>
@@ -80,11 +85,16 @@ export default function AboutSlide() {
         <p
           style={{
             fontFamily: "'Big Shoulders Display', sans-serif",
-            fontSize: "clamp(1.55rem, 3.2vw, 3rem)",
+            fontSize: "clamp(1.35rem, 5.5vw, 2.8rem)",
             fontWeight: 700,
-            lineHeight: 1.25,
+            lineHeight: 1.2,
             letterSpacing: "-0.01em",
             margin: 0,
+            boxSizing: "border-box",
+            width: "100%",
+            whiteSpace: "normal",
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
           }}
           aria-label={ABOUT_TEXT}
         >
@@ -94,7 +104,7 @@ export default function AboutSlide() {
               ref={el => { wordsRef.current[i] = el; }}
               style={{
                 display: "inline",
-                color: "rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.3)",
                 marginRight: "0.32em",
               }}
             >
