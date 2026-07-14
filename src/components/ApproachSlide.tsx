@@ -184,7 +184,7 @@ export default function ApproachSlide() {
 
   const textStyle = {
     fontFamily: "'Big Shoulders Display', sans-serif",
-    fontSize: "clamp(1.8rem, 4.8vw, 4.8rem)",
+    fontSize: "clamp(1.4rem, 7.2vmin, 4.2rem)",
     fontWeight: 800,
     lineHeight: 0.92,
     textTransform: "uppercase" as const,
@@ -231,8 +231,8 @@ export default function ApproachSlide() {
       <div
         style={{
           position: "absolute",
-          width: "min(95vw, 1000px)",
-          height: "min(95vw, 1000px)",
+          width: "min(88vw, 88vh, 880px)",
+          height: "min(88vw, 88vh, 880px)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -258,11 +258,11 @@ export default function ApproachSlide() {
               return (
                 <g key={idx}>
                   <path
-                    fill="none"
-                    style={{
-                      stroke: "rgba(0, 0, 0, 0.08)",
-                      strokeWidth: 1.5,
-                    }}
+                     fill="none"
+                     style={{
+                       stroke: "rgba(0, 0, 0, 0.08)",
+                       strokeWidth: 1.5,
+                     }}
                   />
                   <text
                     x={tx}
@@ -271,7 +271,7 @@ export default function ApproachSlide() {
                     dominantBaseline="middle"
                     style={{
                       fontFamily: "'DM Sans', Arial, sans-serif",
-                      fontSize: "16px",
+                      fontSize: "24px",
                       fontWeight: 500,
                       fill: "rgba(0, 0, 0, 0.45)",
                     }}
