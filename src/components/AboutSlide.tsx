@@ -58,7 +58,7 @@ export default function AboutSlide() {
     >
       <div
         style={{
-          maxWidth: "860px",
+          maxWidth: "920px",
           padding: "0 clamp(1.25rem, 6vw, 4rem)",
           width: "100%",
           boxSizing: "border-box",
@@ -98,9 +98,10 @@ export default function AboutSlide() {
               key={i}
               ref={el => { wordsRef.current[i] = el; }}
               style={{
-                display: "inline",
+                display: "inline-block",
                 color: "rgba(255,255,255,0.3)",
                 marginRight: "0.32em",
+                whiteSpace: "nowrap",
               }}
             >
               {word}

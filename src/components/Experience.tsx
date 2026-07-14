@@ -287,7 +287,7 @@ const Experience = () => {
                   <strong style={{ color: "#ffffff", fontWeight: 600 }}>
                     {card.workedOn}
                   </strong>{" "}
-                  — {card.responsibilities.join(" ")}
+                  : {card.responsibilities.join(" ")}
                 </p>
 
                 <span
