@@ -15,6 +15,7 @@ const Experience = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeImage, setActiveImage] = useState<any>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -189,6 +190,7 @@ const Experience = () => {
             >
               {/* ── Card Image Wrapper ── */}
               <div
+                onClick={() => setActiveImage(card.imgPath)}
                 style={{
                   position: "relative",
                   width: "100%",
@@ -196,6 +198,7 @@ const Experience = () => {
                   borderRadius: "24px",
                   overflow: "hidden",
                   backgroundColor: "#111111",
+                  cursor: "zoom-in",
                 }}
               >
                 <Image
@@ -385,6 +388,80 @@ const Experience = () => {
           </svg>
         </button>
       </div>
+
+      {/* ── Image Lightbox Modal ── */}
+      {activeImage && (
+        <div
+          onClick={() => setActiveImage(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.9)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "zoom-out",
+            animation: "fadeIn 0.25s ease forwards",
+          }}
+        >
+          {/* Close button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveImage(null);
+            }}
+            style={{
+              position: "absolute",
+              top: "2rem",
+              right: "2rem",
+              background: "none",
+              border: "none",
+              color: "#ffffff",
+              cursor: "pointer",
+              padding: "0.5rem",
+              zIndex: 10000,
+              transition: "transform 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            aria-label="Close modal"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          {/* Image wrapper with scale animation */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: "relative",
+              width: "90vw",
+              height: "85vh",
+              maxHeight: "85vh",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              animation: "scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+            }}
+          >
+            <Image
+              src={activeImage}
+              alt="Preview"
+              style={{
+                objectFit: "contain",
+                borderRadius: "12px",
+              }}
+              fill
+              sizes="90vw"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Hide Scrollbars Global Inline CSS Utility */}
       <style jsx global>{`

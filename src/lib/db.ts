@@ -233,6 +233,7 @@ export const experienceCards = [
     workedOn: "SMS Verification & Virtual Number Rental Platform",
     title: "Full Stack Development",
     date: "February 2026 - July",
+    liveLink: 'https://www.charlesmailingtechshop.com/login',
     responsibilities: [
       "Built with React, TypeScript, Node.js, and Firebase for real-time full-stack scalability.",
       "Allows users to purchase temporary or long-term virtual phone numbers for OTP verification (WhatsApp, Telegram, etc.) across multiple servers.",
