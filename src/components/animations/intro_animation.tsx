@@ -15,6 +15,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [dots, setDots] = useState<{ id: number; x: number; y: number; size: number }[]>([]);
 
   useEffect(() => {
     // If already played, immediately skip
@@ -29,6 +30,16 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
+
+    // Generate random particle positions only on client mount to prevent SSR hydration mismatch
+    setDots(
+      Array.from({ length: 45 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+      }))
+    );
 
     // Start requestAnimationFrame count-up (smooth 2000ms count duration so it stays longer)
     let start: number | null = null;
@@ -84,12 +95,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
     };
   }, [onComplete]);
 
-  const dots = Array.from({ length: 45 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-  }));
+
 
   if (!isVisible || hasPlayedCompleted) return null;
 
