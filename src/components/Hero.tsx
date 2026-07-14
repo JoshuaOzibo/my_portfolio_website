@@ -262,7 +262,7 @@ export default function Hero() {
             fontFamily: "'DM Sans', Arial, sans-serif",
             fontSize: "0.55rem",
             fontWeight: 500,
-            color: "rgba(255,255,255,0.35)",
+            color: "rgba(255,255,255,0.55)",
             letterSpacing: "0.22em",
             textTransform: "uppercase",
             marginBottom: "0.5rem",
@@ -299,7 +299,7 @@ export default function Hero() {
                   <span style={{
                     fontFamily: "'DM Sans', Arial, sans-serif",
                     fontSize: "0.5rem",
-                    color: "rgba(255,255,255,0.3)",
+                    color: "rgba(255,255,255,0.55)",
                     letterSpacing: "0.05em",
                     whiteSpace: "nowrap",
                   }}>

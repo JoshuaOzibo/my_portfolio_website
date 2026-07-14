@@ -22,6 +22,7 @@ const Footer = () => {
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Joshua's GitHub Profile"
           >
             <FaGithub color="#fff" size={30} />
           </a>
@@ -30,6 +31,7 @@ const Footer = () => {
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Connect with Joshua on LinkedIn"
           >
             <FaLinkedin color="#fff" size={30} />
           </a>
@@ -38,12 +40,14 @@ const Footer = () => {
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Follow Joshua on Instagram"
           >
             <FaInstagramSquare color="#fff" size={30} />
           </a>
           <button
             onClick={handleEmailContact}
             className="border border-black-50 p-2 transition-all duration-150 rounded-md"
+            aria-label="Send Email to Joshua"
           >
             <MdEmail color="#fff" size={30} />
           </button>

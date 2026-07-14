@@ -158,7 +158,7 @@ const Experience = () => {
             fontFamily: "'DM Sans', Arial, sans-serif",
             fontSize: "0.68rem",
             fontWeight: 500,
-            color: "rgba(255, 255, 255, 0.4)",
+            color: "rgba(255, 255, 255, 0.55)",
             letterSpacing: "0.2em",
             textTransform: "uppercase",
             display: "block",
@@ -279,6 +279,7 @@ const Experience = () => {
                     href={card.liveLink}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={`Visit live website for ${card.workedOn}`}
                     style={{
                       position: "absolute",
                       bottom: "1.5rem",
@@ -349,7 +350,7 @@ const Experience = () => {
                     marginTop: "0.6rem",
                     fontFamily: "'DM Sans', Arial, sans-serif",
                     fontSize: "0.8rem",
-                    color: "rgba(255, 255, 255, 0.4)",
+                    color: "rgba(255, 255, 255, 0.55)",
                     letterSpacing: "0.05em",
                   }}
                 >
