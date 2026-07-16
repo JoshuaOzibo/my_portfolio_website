@@ -243,12 +243,12 @@ const Navbar = () => {
                 target="_blank" rel="noreferrer"
                 style={{
                   fontFamily: "'DM Sans', Arial, sans-serif", fontSize: "0.7rem",
-                  color: "rgba(255,255,255,0.4)", textDecoration: "none",
+                  color: "rgba(255,255,255,0.55)", textDecoration: "none",
                   letterSpacing: "0.15em", textTransform: "uppercase",
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = "white")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
               >
                 {s.label}
               </a>

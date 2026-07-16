@@ -13,7 +13,7 @@ const Footer = () => {
   };
 
   return (
-    <div className=" z-0 border-t border-black-50 py-5 space-y-3 lg:space-y-0 lg:flex items-center justify-center lg:justify-between px-10 text-[#86cad9] w-full">
+    <div className=" z-0 border-t border-black-50 py-5 space-y-3 lg:space-y-0 lg:flex items-center justify-center lg:justify-between px-10 text-white/60 w-full">
       <h1 className="text-center lg:text-left">Terms & Conditions</h1>
       <div className="flex justify-center items-center">
         <div className="flex space-x-5 md:m-0 m-auto">
@@ -22,6 +22,7 @@ const Footer = () => {
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Joshua's GitHub Profile"
           >
             <FaGithub color="#fff" size={30} />
           </a>
@@ -30,6 +31,7 @@ const Footer = () => {
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Connect with Joshua on LinkedIn"
           >
             <FaLinkedin color="#fff" size={30} />
           </a>
@@ -38,12 +40,14 @@ const Footer = () => {
             className="border border-black-50 p-2 hover: transition-all duration-150 rounded-md"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Follow Joshua on Instagram"
           >
             <FaInstagramSquare color="#fff" size={30} />
           </a>
           <button
             onClick={handleEmailContact}
             className="border border-black-50 p-2 transition-all duration-150 rounded-md"
+            aria-label="Send Email to Joshua"
           >
             <MdEmail color="#fff" size={30} />
           </button>
