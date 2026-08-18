@@ -10,6 +10,7 @@ import MentlyImage from "@/assets/MentlyImage.png";
 import chromeExtensionImage from "@/assets/extention images_Stay Organized – Track all your job applications, interviews, and follow-ups in one place.(purple).webp";
 import BorookPreviewImage from "@/assets/BorookUi.png";
 import CharlesMailingImage from "@/assets/charles_mailing_image.png";
+import KingsLoungePreview from "@/assets/kings_lounge_preview.png";
 
 // skills Svgicons 
 import NextJsImage from "@/assets/Skills/next-js.svg";
@@ -241,15 +242,16 @@ export const experienceCards = [
     ],
   },
   {
-    imgPath: PostGeneratorPreview,
-    workedOn: "AI-Powered Content Creation App",
-    title: "Full Stack Development",
-    date: "September 2025 - Present",
-    liveLink: 'https://social-media-post-generator-delta.vercel.app/',
+    imgPath: KingsLoungePreview,
+    workedOn: "Kings Lounge Digital",
+    title: "Frontend & Motion Design",
+    date: "August 2026",
+    liveLink: 'https://cinematic-websites-designs.vercel.app',
     responsibilities: [
-      "Built with Next.js, TypeScript, and Node.js for scalable full-stack development",
-      "Allows users to input post ideas, schedule posts by day, and toggle hashtags and images.",
-      "Integrated Google Gemini and Unsplash API to automate text and image creation.",
+      "A luxury hospitality landing page designed for a premier lounge, shisha bar, and entertainment venue in Asaba, Nigeria.",
+      "Combines an editorial dark-mode aesthetic with immersive GSAP animations, fluid scroll interactions, responsive layouts, and a curated digital menu experience.",
+      "Built with TanStack Start (React 19), TypeScript, Tailwind CSS v4, GSAP, Radix UI, and Zod.",
+      "Highlights include interactive menu browsing, smooth scroll-triggered animations, sticky category navigation, responsive mobile experience, micro-interactions, and performance-focused motion design.",
     ],
   },
   {
@@ -265,6 +267,19 @@ export const experienceCards = [
       "Optimized the site for performance, improving load times and animation fluidity.",
     ],
   },
+  {
+    imgPath: PostGeneratorPreview,
+    workedOn: "AI-Powered Content Creation App",
+    title: "Full Stack Development",
+    date: "September 2025 - Present",
+    liveLink: 'https://social-media-post-generator-delta.vercel.app/',
+    responsibilities: [
+      "Built with Next.js, TypeScript, and Node.js for scalable full-stack development",
+      "Allows users to input post ideas, schedule posts by day, and toggle hashtags and images.",
+      "Integrated Google Gemini and Unsplash API to automate text and image creation.",
+    ],
+  },
+  
   {
     imgPath: SwiftcareerPreview,
     workedOn: "SwiftCareer Website",
