@@ -11,6 +11,7 @@ import chromeExtensionImage from "@/assets/extention images_Stay Organized – T
 import BorookPreviewImage from "@/assets/BorookUi.png";
 import CharlesMailingImage from "@/assets/charles_mailing_image.png";
 import KingsLoungePreview from "@/assets/kings_lounge_preview.png";
+import CoffelioPreview from "@/assets/coffelio.png";
 
 // skills Svgicons 
 import NextJsImage from "@/assets/Skills/next-js.svg";
@@ -252,6 +253,20 @@ export const experienceCards = [
       "Combines an editorial dark-mode aesthetic with immersive GSAP animations, fluid scroll interactions, responsive layouts, and a curated digital menu experience.",
       "Built with TanStack Start (React 19), TypeScript, Tailwind CSS v4, GSAP, Radix UI, and Zod.",
       "Highlights include interactive menu browsing, smooth scroll-triggered animations, sticky category navigation, responsive mobile experience, micro-interactions, and performance-focused motion design.",
+    ],
+  },
+  {
+    imgPath: CoffelioPreview,
+    workedOn: "Coffelio - Cinematic Brand Experience",
+    title: "Frontend & Motion Design",
+    date: "August 2026",
+    liveLink: 'https://cinematic-websites-designs-8mis.vercel.app',
+    responsibilities: [
+      "Built with React 19, Vite, Tailwind CSS v4 (@theme design system variables), GSAP & ScrollTrigger.",
+      "Custom Fraunces variable font integration with SOFT & WONK font axes for a distinctive rounded serif aesthetic.",
+      "Orchestrated intro loader curtain with asset preloading (img.decode()) and real progress metering.",
+      "Layered hero composition with floating coffee bean particles and smooth 3D product cup handoff transitions between showcase and product spotlight cards (Green Tea Cream, Coffee & Cream, Berry Cream).",
+      "Dynamic HSL accent background transitions based on active product.",
     ],
   },
   {
